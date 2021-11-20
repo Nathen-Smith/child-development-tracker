@@ -11,7 +11,7 @@ mongoose
   .catch((err) => console.log(err));
 
 // define a route handler for the default home page
-app.get("/", (req, res) => {
+app.get("/test", (req, res) => {
   res.send({ message: "OK", data: "Hello world!" });
 });
 
