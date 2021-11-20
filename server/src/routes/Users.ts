@@ -7,6 +7,6 @@ const { OK, NOT_FOUND } = StatusCodes;
 
 export async function getAllUsers(req: Request, res: Response) {
   const users = await User.find();
-  if (!users) return res.status(NOT_FOUND).json();
+  if (users.length === 0) return res.status(NOT_FOUND).json();
   return res.status(OK).json({ users });
 }
