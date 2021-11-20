@@ -9,9 +9,9 @@ const app = express();
 app.use(cors());
 app.use("/api", baseRouter);
 
-// mongoose
-//   .connect(process.env.MONGO_CONNECTION || mongoKey)
-//   .catch((err) => console.log(err));
+mongoose
+  .connect(process.env.MONGO_CONNECTION || mongoKey)
+  .catch((err) => console.log(err));
 
 // TEST ROUTE
 app.get("/api/test", (req, res) => {
