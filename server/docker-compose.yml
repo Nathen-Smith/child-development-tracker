@@ -1,0 +1,7 @@
+services:
+  server:
+    build: .
+    env_file:
+      - ./config/.env.dev
+    ports:
+    - "8080:8080"
