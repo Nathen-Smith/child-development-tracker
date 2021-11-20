@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Test } from "./components/Test";
 
 function App() {
   const [testRes, setTestRes] = useState("");
@@ -14,7 +15,11 @@ function App() {
     }
     test();
   }, []);
-  return <div className="App">{`Data from server: "${testRes}"`}</div>;
+  return (
+    <div>
+      <Test data={testRes} />
+    </div>
+  );
 }
 
 export default App;
