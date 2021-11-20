@@ -5,7 +5,7 @@ function App() {
   useEffect(() => {
     async function test() {
       try {
-        const res = await fetch("http://localhost:5000");
+        const res = await fetch("/test");
         const resJson = await res.json();
         setTestRes(resJson.data);
       } catch (err) {
