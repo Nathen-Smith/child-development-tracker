@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Test } from "./components/Test";
+import { Login } from "./components/Login";
+import { Routes, Route, Link } from "react-router-dom";
 
 function App() {
   const [testRes, setTestRes] = useState("");
@@ -18,6 +20,13 @@ function App() {
   return (
     <div>
       <Test data={testRes} />
+      <nav>
+        <Link to="/">Home</Link>
+        <Link to="/login">Sign In</Link>
+      </nav>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+      </Routes>
     </div>
   );
 }
