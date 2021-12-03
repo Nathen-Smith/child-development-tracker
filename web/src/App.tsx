@@ -1,9 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Test } from "./components/Test";
-import { Login } from "./components/Login";
 import { Routes, Route, Link } from "react-router-dom";
+import { SignIn } from "./components/auth/SignIn";
+import { SignOut } from "./components/auth/SignOut";
+import { useUser } from "reactfire";
 
 function App() {
+  // const { status, data: signInCheckResult } = useSigninCheck();
+  // https://github.com/FirebaseExtended/reactfire/blob/main/docs/use.md#auth
+  // can use signInCheckResult.signedIn to check whether signed in or not
+  const { data: user } = useUser();
+
   const [testRes, setTestRes] = useState("");
   useEffect(() => {
     async function test() {
@@ -19,13 +26,16 @@ function App() {
   }, []);
   return (
     <div>
-      <Test data={testRes} />
       <nav>
         <Link to="/">Home</Link>
-        <Link to="/login">Sign In</Link>
+        <Link to="/test">Test</Link>
+        <SignIn />
+        <SignOut />
+        {user && <>Signed in as {user.displayName}</>}
       </nav>
+
       <Routes>
-        <Route path="/login" element={<Login />} />
+        <Route path="/test" element={<Test data={testRes} />} />
       </Routes>
     </div>
   );
