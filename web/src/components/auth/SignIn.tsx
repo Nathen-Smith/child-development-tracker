@@ -20,7 +20,6 @@ async function buttonSignIn(auth: Auth) {
 export const SignIn = () => {
   const app = useFirebaseApp();
   const auth = getAuth(app);
-
   return (
     <button
       onClick={async () => {
