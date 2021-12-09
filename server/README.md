@@ -37,33 +37,33 @@
 *All schema have an "_id" field and "createdAt" field which are both automatically set
 
 **User schema:**
-name: string (required)
-email: string (required, unique)
+name: string (required)<br />
+email: string (required, unique)<br />
 
 **Sleep schema:**
-typeOfSleep: string (required)
-time: date (required)
-notes: string (required)
-email: string (required)
+typeOfSleep: string (required)<br />
+time: date (required)<br />
+notes: string (required)<br />
+email: string (required)<br />
 
 **Milestone schema:**
-title: string (required)
-timeline: number (required) *age range in months
-email: string (required)
+title: string (required)<br />
+timeline: number (required) *age range in months<br />
+email: string (required)<br />
 
 **Journal schema:**
-title: string (required)
-body: string (required)
-email: string (required)
+title: string (required)<br />
+body: string (required)<br />
+email: string (required)<br />
 
 **Food schema:**
-typesOfFood: [string] (required)
-time: date (required)
-notes: string (required)
-email: string (required)
+typesOfFood: [string] (required)<br />
+time: date (required)<br />
+notes: string (required)<br />
+email: string (required)<br />
 
 **Changes schema:**
-consistency: string (required)
-time: date (required)
-notes: string (required)
-email: string (required)
+consistency: string (required)<br />
+time: date (required)<br />
+notes: string (required)<br />
+email: string (required)<br />
