@@ -36,33 +36,33 @@
 ```
 *All schema have an "_id" field and "createdAt" field which are both automatically set
 
-**User schema:**
+**User schema:**<br />
 name: string (required)<br />
 email: string (required, unique)<br />
 
-**Sleep schema:**
+**Sleep schema:**<br />
 typeOfSleep: string (required)<br />
 time: date (required)<br />
 notes: string (required)<br />
 email: string (required)<br />
 
-**Milestone schema:**
+**Milestone schema:**<br />
 title: string (required)<br />
 timeline: number (required) *age range in months<br />
 email: string (required)<br />
 
-**Journal schema:**
+**Journal schema:**<br />
 title: string (required)<br />
 body: string (required)<br />
 email: string (required)<br />
 
-**Food schema:**
+**Food schema:**<br />
 typesOfFood: [string] (required)<br />
 time: date (required)<br />
 notes: string (required)<br />
 email: string (required)<br />
 
-**Changes schema:**
+**Changes schema:**<br />
 consistency: string (required)<br />
 time: date (required)<br />
 notes: string (required)<br />
