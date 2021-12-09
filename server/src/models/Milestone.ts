@@ -6,7 +6,9 @@ const MilestoneEntry = new Schema(
     timeline: { type: Number, required: true }, // age range in months for this milestone
     email: { type: String, required: true },
     createdAt: { type: Date, default: Date.now },
-  },
+  }, {
+    versionKey: false
+  }
 );
 
 const Milestone = mongoose.model("Milestone", MilestoneEntry);

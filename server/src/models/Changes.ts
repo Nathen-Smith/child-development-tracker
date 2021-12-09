@@ -7,7 +7,9 @@ const ChangesSchema = new Schema(
     notes: { type: String, required: true },
     email: { type: String, required: true },
     createdAt: {type: Date, default: Date.now}
-  },
+  }, {
+    versionKey: false
+  }
 );
 
 const Changes = mongoose.model("Changes", ChangesSchema);

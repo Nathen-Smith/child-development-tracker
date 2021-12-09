@@ -7,7 +7,9 @@ const SleepSchema = new Schema(
     notes: { type: String, required: true },
     email: { type: String, required: true },
     createdAt: {type: Date, default: Date.now}
-  },
+  }, {
+    versionKey: false
+  }
 );
 
 const Sleep = mongoose.model("Sleep", SleepSchema);

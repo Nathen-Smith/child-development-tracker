@@ -6,7 +6,9 @@ const JournalSchema = new Schema(
     body: { type: String, required: true },
     email: { type: String, required: true },
     createdAt: {type: Date, default: Date.now}
-  },
+  }, {
+    versionKey: false
+  }
 );
 
 const Journal = mongoose.model("Journal", JournalSchema);
