@@ -73,20 +73,66 @@ export async function createChanges(req: Request, res: Response) {
 
 /**
  * Sends an UPDATE request to the Changes collection and returns the response
+ * UPDATE is performed with respect to object id
  * @param req object representing the HTTP request
  * @param res object representing the HTTP response
  * @returns json formatted response with status code
  */
 export async function updateChanges(req: Request, res: Response) {
-  return res.status(NOT_FOUND).json();
+  if (!req.body._id) {
+    return res.status(BAD_REQUEST).json({
+      message: 'PUT failed: _id required',
+      data: []
+    });
+  }
+
+  const filter = {
+    _id: req.body._id
+  };
+
+  try {
+    let find = await Changes.findOneAndUpdate(filter, req.body);
+    return res.status(OK).json({
+      message: 'PUT successful',
+      data: find
+    });
+  } catch (err) {
+    return res.status(NOT_FOUND).json({
+      message: 'PUT failed: specified change does not exist',
+      data: []
+    });
+  }
 }
 
 /**
  * Sends a DELETE request to the Changes collection and returns the response
+ * DELETE is performed with respect to object id
  * @param req object representing the HTTP request
  * @param res object representing the HTTP response
  * @returns json formatted response with status code
  */
 export async function deleteChanges(req: Request, res: Response) {
-  return res.status(NOT_FOUND).json();
+  if (!req.body._id) {
+    return res.status(BAD_REQUEST).json({
+      message: 'DELETE failed: _id required',
+      data: []
+    });
+  }
+
+  const filter = {
+    _id: req.body._id
+  };
+
+  try {
+    const deleted = await Changes.deleteOne(filter);
+    return res.status(OK).json({
+      message: 'DELETE successful',
+      data: deleted
+    });
+  } catch (err) {
+    return res.status(NOT_FOUND).json({
+      message: 'DELETE failed: specified change does not exist',
+      data: []
+    });
+  }
 }

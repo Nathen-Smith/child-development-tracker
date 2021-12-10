@@ -72,20 +72,66 @@ export async function createJournal(req: Request, res: Response) {
 
 /**
  * Sends an UPDATE request to the Journal collection and returns the response
+ * UPDATE is performed with respect to object id
  * @param req object representing the HTTP request
  * @param res object representing the HTTP response
  * @returns json formatted response with status code
  */
 export async function updateJournal(req: Request, res: Response) {
-  return res.status(NOT_FOUND).json();
+  if (!req.body._id) {
+    return res.status(BAD_REQUEST).json({
+      message: 'PUT failed: _id required',
+      data: []
+    });
+  }
+
+  const filter = {
+    _id: req.body._id
+  };
+
+  try {
+    let find = await Journal.findOneAndUpdate(filter, req.body);
+    return res.status(OK).json({
+      message: 'PUT successful',
+      data: find
+    });
+  } catch (err) {
+    return res.status(NOT_FOUND).json({
+      message: 'PUT failed: specified journal entry does not exist',
+      data: []
+    });
+  }
 }
 
 /**
  * Sends a DELETE request to the Journal collection and returns the response
+ * DELETE is performed with respect to object id
  * @param req object representing the HTTP request
  * @param res object representing the HTTP response
  * @returns json formatted response with status code
  */
 export async function deleteJournal(req: Request, res: Response) {
-  return res.status(NOT_FOUND).json();
+  if (!req.body._id) {
+    return res.status(BAD_REQUEST).json({
+      message: 'DELETE failed: _id required',
+      data: []
+    });
+  }
+
+  const filter = {
+    _id: req.body._id
+  };
+
+  try {
+    const deleted = await Journal.deleteOne(filter);
+    return res.status(OK).json({
+      message: 'DELETE successful',
+      data: deleted
+    });
+  } catch (err) {
+    return res.status(NOT_FOUND).json({
+      message: 'DELETE failed: specified journal entry does not exist',
+      data: []
+    });
+  }
 }

@@ -1,10 +1,5 @@
 import { Router } from "express";
-// import { getChanges, createChanges, updateChanges, deleteChanges } from "./Changes";
-// import { getFood, createFood, updateFood, deleteFood } from "./Food";
-// import { getJournal, createJournal, updateJournal, deleteJournal } from "./Journal";
-// import { getMilestone, createMilestone, updateMilestone, deleteMilestone } from "./Milestone";
-// import { getSleep, createSleep, updateSleep, deleteSleep } from "./Sleep";
-// import { getUser, createUser, updateUser, deleteUser } from "./User";
+
 var Changes = require("./Changes");
 var Food = require("./Food");
 var Journal = require("./Journal");

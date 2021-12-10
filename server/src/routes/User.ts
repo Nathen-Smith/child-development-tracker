@@ -105,7 +105,6 @@ export async function updateUser(req: Request, res: Response) {
       data: []
     });
   }
-  
 }
 
 /**
