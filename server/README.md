@@ -8,14 +8,24 @@
 |          | DELETE    | Delete an existing user with respect to email|
 | sleep    | GET     | Read a list of sleep entries |
 |          | POST    | Create a new sleep entry |
+|          | PUT    | Update an existing sleep entry with respect to _id|
+|          | DELETE    | Delete an existing sleep entry with respect to _id|
 | milestone    | GET     | Read a list of milestones |
 |          | POST    | Create a new milestone|
+|          | PUT    | Update an existing milestone with respect to _id|
+|          | DELETE    | Delete an existing milestone with respect to _id|
 | journal    | GET     | Read a list of journal entries |
 |          | POST    | Create a new journal entry |
+|          | PUT    | Update an existing journal entry with respect to _id|
+|          | DELETE    | Delete an existing journal entry with respect to _id|
 | food    | GET     | Read a list of food entries |
 |          | POST    | Create a new food entry |
+|          | PUT    | Update an existing food entry with respect to _id|
+|          | DELETE    | Delete an existing food entry with respect to _id|
 | changes    | GET     | Read a list of change entries |
 |          | POST    | Create a new change entry |
+|          | PUT    | Update an existing change entry with respect to _id|
+|          | DELETE    | Delete an existing change entry with respect to _id|
 
 **GET requests can contain the following query parameters:**
 | Parameter | Description                                                                                  |
