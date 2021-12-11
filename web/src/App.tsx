@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Test } from "./components/Test";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link} from "react-router-dom";
 import { SignIn } from "./components/auth/SignIn";
 import { SignOut } from "./components/auth/SignOut";
+import JournalEntry from "./components/JournalEntry"
 import { useUser } from "reactfire";
 
 export default function App() {
@@ -50,6 +51,7 @@ export default function App() {
 
       <Routes>
         <Route path="/test" element={<Test data={testRes} />} />
+        <Route path="/journal/post" element={<JournalEntry />} />
       </Routes>
     </div>
   );
