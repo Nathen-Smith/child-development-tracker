@@ -7,7 +7,8 @@ import { BrowserRouter } from "react-router-dom";
 import { AuthProvider, FirebaseAppProvider } from "reactfire";
 import { getAuth } from "firebase/auth";
 import app, { firebaseConfig } from "./config";
-import './index.css'
+
+import "./index.css";
 
 const auth = getAuth(app);
 

@@ -5,7 +5,7 @@ import { SignIn } from "./components/auth/SignIn";
 import { SignOut } from "./components/auth/SignOut";
 import { useUser } from "reactfire";
 
-function App() {
+export default function App() {
   // const { status, data: signInCheckResult } = useSigninCheck();
   // https://github.com/FirebaseExtended/reactfire/blob/main/docs/use.md#auth
   // can use signInCheckResult.signedIn to check whether signed in or not
@@ -27,18 +27,26 @@ function App() {
   return (
     <div>
       <nav>
-        <Link to="/">Home</Link>
-        <Link to="/test">Test</Link>
+        <Link
+          to="/"
+          className="text-gray-400 hover:bg-gray-300 hover:text-black px-3 py-2 rounded-md text-sm font-medium"
+        >
+          Home
+        </Link>
+        <Link
+          to="/test"
+          className="text-gray-400 hover:bg-gray-300 hover:text-black px-3 py-2 rounded-md text-sm font-medium"
+        >
+          Test
+        </Link>
         <SignIn />
         <SignOut />
-        {user && <>Signed in as {user.displayName}</>}
+        {user && (
+          <span className="px-3 py-2 rounded-md text-sm font-medium">
+            Signed in as {user.displayName}
+          </span>
+        )}
       </nav>
-
-      <div>
-      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-4 mt-4">
-        Button
-      </button>
-      </div>
 
       <Routes>
         <Route path="/test" element={<Test data={testRes} />} />
@@ -46,5 +54,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
