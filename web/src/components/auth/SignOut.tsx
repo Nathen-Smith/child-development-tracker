@@ -14,7 +14,7 @@ async function buttonSignOut(auth: Auth) {
 export const SignOut = () => {
   const app = useFirebaseApp();
   const auth = getAuth(app);
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
   return (
     <button
