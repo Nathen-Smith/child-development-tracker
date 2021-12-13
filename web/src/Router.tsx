@@ -5,6 +5,10 @@ import { useUser } from "reactfire";
 import { JournalEntry } from "./components/JournalEntry";
 import { Home } from "./components/Home";
 import {Milestones} from "./components/Milestones";
+import {Changes} from "./components/Changes";
+import {Sleep} from "./components/Sleep";
+import {Food} from "./components/Food";
+
 
 
 interface RequireAuthProps {
@@ -28,6 +32,9 @@ export const Router = () => {
   const routes = [
     { element: <Home />, path: "/", auth: false },
     { element: <Milestones />, path: "/milestones", auth: false },
+    { element: <Changes />, path: "/changes", auth: false },
+    { element: <Sleep />, path: "/sleep", auth: false },
+    { element: <Food />, path: "/food", auth: false },
     { element: <JournalEntry />, path: "/journal/post", auth: true },
   ];
 

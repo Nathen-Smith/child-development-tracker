@@ -23,6 +23,9 @@ export default function App() {
   const navigation = [
     { to: "/", auth: false, name: "Home" },
     { to: "/milestones", auth: false, name: "Milestones" },
+    { to: "/changes", auth: false, name: "Changes" },
+    { to: "/sleep", auth: false, name: "Sleep" },
+    { to: "/food", auth: false, name: "Food" },
     { to: "/journal/post", auth: true, name: "Journal" },
   ];
 
