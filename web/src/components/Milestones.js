@@ -3,7 +3,7 @@ import './App.css';
 // import { React, useEffect, useState } from "react";
 import PropTypes from 'prop-types';
 import { StatsCard } from './StatsCard';
-import { JournalCard } from './JournalCard';
+import { MilestoneCard } from './MilestoneCard';
 
 // import { useHistory } from "react-router-dom";
 
@@ -26,72 +26,75 @@ export function Milestones(props) {
   // const history = useHistory();
 
   // [url=https://imgbb.com/][img]https://i.ibb.co/HpXknVP/image1.png[/img][/url]
-// [url=https://imgbb.com/][img]https://i.ibb.co/26zN4bM/image2.png[/img][/url]
-// [url=https://imgbb.com/][img]https://i.ibb.co/NtSHHYj/image3.png[/img][/url]
+  // [url=https://imgbb.com/][img]https://i.ibb.co/26zN4bM/image2.png[/img][/url]
+  // [url=https://imgbb.com/][img]https://i.ibb.co/NtSHHYj/image3.png[/img][/url]
 
 
   return (
+<div>
+
+  <h1 class="text-lg font-semibold text-gray-900 mt-12 ml-12">Statistics</h1>
+  <div class="flex flex-row  p-12" style={{'justify-content': 'space-between', 'width': '100%'}}>
+    <StatsCard color={'primary'} name="Social and Emotional" timeline={6} />
+    <StatsCard color={'success'} name="Language/Communication" timeline={6} />
+    <StatsCard color={'danger'} name="Cognitive Development" timeline={6} />
+    <StatsCard color={'warning'} name="Social and Emotional" timeline={6} />
+    
+  </div>
+  
+  <h1 class="text-lg font-semibold text-gray-900 ml-12">Milestone Completion</h1>
+    <div className="bg-white flex overflow-hidden" style={{'height': '59vh'}}>
 
 
-    <div className="min-h-screen bg-white flex overflow-hidden">
-      <div className="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
-        <div className="mx-auto w-full max-w-sm lg:w-96">
-          <h1 class="text-lg font-semibold text-gray-900">Child Development Monitor</h1>
-          <div class="columns-3 mt-6 flex flex-row">
-            <div class="column">
-              <img src='https://i.ibb.co/HpXknVP/image1.png' alt="logo" />
-            </div>
-            <div class="column">
-              <div class="column">
-                <img src='https://i.ibb.co/26zN4bM/image2.png' alt="logo" />
-              </div>
-            </div>
-            <div class="column">
-              <div class="column">
-                <img src='https://i.ibb.co/NtSHHYj/image3.png' alt="logo" />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <h1 class="text-lg font-semibold text-gray-900 mt-12">Statistics</h1>
-
-        <StatsCard color={'primary'} name="Social and Emotional" timeline={6} />
-        <StatsCard color={'success'} name="Language/Communication" timeline={6} />
-        <StatsCard color={'danger'} name="Cognitive Development" timeline={6} />
-        <StatsCard color={'warning'} name="Social and Emotional" timeline={6} />
-
-
-      </div>
       <div>
 
-      <div class="flex-auto flex flex-row-reverse mt-4 mr-12" style={{ 'height': '5vh' }}>
-        <button class="h-10 px-6 font-semibold rounded-md bg-indigo-700 text-white" type="submit">
-          New Journal Entry
-        </button>
-        <button class="h-10 px-6 font-semibold rounded-md border border-gray-200 text-gray-900 mr-6" type="button">
-          Update Milestones
-        </button>
-      </div>
-        <div className='overflow-scroll pt-12' style={{ 'height': '82vh' }}>
-          <JournalCard />
-          <JournalCard />
-          <JournalCard />
-          <JournalCard />
-          <JournalCard />
-          <JournalCard />
+        <div class="flex-auto flex flex-row mt-4 mr-12" style={{ 'height': '5vh' }}>
+          <div className='overflow-scroll pt-12' style={{ 'height': '82vh' }}>
+          <h1 class="text-lg font-regular text-gray-900 ml-12 mb-12">Social and Emotional</h1>
+            <MilestoneCard />
+            <MilestoneCard />
+            <MilestoneCard />
+            <MilestoneCard />
+            <MilestoneCard />
+            <MilestoneCard />
+          </div>
+          <div className='overflow-scroll pt-12' style={{ 'height': '82vh' }}>
+          <h1 class="text-lg font-regular text-gray-900 ml-12 mb-12">Language/Communication</h1>
+            <MilestoneCard />
+            <MilestoneCard />
+            <MilestoneCard />
+            <MilestoneCard />
+            <MilestoneCard />
+            <MilestoneCard />
+          </div>
+          <div className='overflow-scroll pt-12' style={{ 'height': '82vh' }}>
+          <h1 class="text-lg font-regular text-gray-900 ml-12 mb-12">Cognitive Development</h1>
+            <MilestoneCard />
+            <MilestoneCard />
+            <MilestoneCard />
+            <MilestoneCard />
+            <MilestoneCard />
+            <MilestoneCard />
+          </div>
+          <div className='overflow-scroll pt-12' style={{ 'height': '82vh' }}>
+            <h1 class="text-lg font-regular text-gray-900 ml-12 mb-12">Social and Emotional</h1>
+            <MilestoneCard />
+            <MilestoneCard />
+            <MilestoneCard />
+            <MilestoneCard />
+            <MilestoneCard />
+            <MilestoneCard />
+          </div>
+
         </div>
 
+
+
+
       </div>
 
-
-
-
     </div>
-
-
-    // </div>
-    // </div>
+    </div>
 
   )
 }

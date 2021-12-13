@@ -13,28 +13,27 @@ const image1 = require('./img/image1.png');
 
 
 
-export function StatsCard(props) {
+export function MilestoneCard(props) {
 
     return (
-        <div class="relative grid grid-cols-1 gap-4 p-4 mb-8 border rounded-lg bg-white shadow-lg">
+        <div class="relative grid grid-cols-1 gap-4 p-4 mb-8 border rounded-lg bg-white shadow-lg mr-12 ml-12">
             <div class="relative flex gap-4">
                 <div class="flex flex-col w-full">
                     <div class="flex flex-row justify-between">
-                        <p class="relative text-xl whitespace-nowrap truncate overflow-hidden mr-12" style={{'width': '240px'}}>{props.name}</p>
-                        <Badge style={{'height': "20px"}} class="mt-6 ml-6" bg={props.color}>{props.timeline + " months"}</Badge>
-
+                        <p class="relative text-xl" style={{'display': 'block', 'overflow': 'auto', 'width': '80%', 'height': '10vh'}}>Can follow 1-step verbal commands without any gestures</p>
+                        {/* <Badge style={{'height': "20px"}} class="mt-6" bg={props.color}>{props.timeline + " months"}</Badge> */}
+                        <button class="h-10 px-6 font-semibold rounded-md bg-indigo-700 text-white" type="submit">
+          Done
+        </button>
                     </div>
                 </div>
             </div>
-            
-            <ProgressBar now={50} label={`${50}%`} variant={props.color}  />
-            {/* <p class="-mt-4 text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. <br />Maxime quisquam vero adipisci beatae voluptas dolor ame.</p> */}
         </div>
 
     )
 }
 
-StatsCard.propTypes = {
+MilestoneCard.propTypes = {
     name: PropTypes.string,
     index: PropTypes.number,
 };
