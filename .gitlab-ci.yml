@@ -2,11 +2,12 @@ image: node:14
 
 variables:
   PUBLIC_URL: /cs498rk_final
-  NODE_ENV: production
+  PRODUCTION: true
 
 cache:
   paths:
-    - /node_modules
+    - web/node_modules
+    - web/package.json
 
 stages:
   - deploy
