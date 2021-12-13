@@ -26,3 +26,4 @@ pages:
 
   only:
     - deployment
+    - main
