@@ -1,12 +1,11 @@
 image: node:14.17
 
 variables:
-  PUBLIC_URL: /centereddiv
+  PUBLIC_URL: /child-dev-tracker
 
 cache:
   paths:
     - /node_modules
-    - package-lock.json
 
 stages:
   - deploy
@@ -16,9 +15,6 @@ pages:
 
   script:
     - cd web/
-    - npm cache clean --force
-    - rm -rf node_modules
-    - rm -rf package-lock.json
     - npm install # Install all dependencies
     - npm run build # Build for prod
     - mv public _public # CRA and gitlab pages both use the public folder. Only do this in a build pipeline.
