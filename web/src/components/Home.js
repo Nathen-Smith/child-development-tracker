@@ -33,7 +33,7 @@ export function Home(props) {
   return (
 
 
-    <div className="min-h-screen bg-white flex overflow-hidden">
+    <div className="bg-white flex overflow-hidden">
       <div className="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
         <div className="mx-auto w-full max-w-sm lg:w-96">
           <h1 class="text-lg font-semibold text-gray-900">Child Development Monitor</h1>
@@ -73,7 +73,7 @@ export function Home(props) {
           Update Milestones
         </button>
       </div>
-        <div className='overflow-scroll pt-12' style={{ 'height': '82vh' }}>
+        <div className='overflow-scroll pt-12' style={{ 'height': '88vh' }}>
           <JournalCard />
           <JournalCard />
           <JournalCard />
