@@ -1,4 +1,4 @@
-image: node:14.17
+image: node:14
 
 variables:
   PUBLIC_URL: /cs498rk_final
