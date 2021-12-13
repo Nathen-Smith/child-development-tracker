@@ -4,6 +4,8 @@ import { useUser } from "reactfire";
 
 import { JournalEntry } from "./components/JournalEntry";
 import { Home } from "./components/Home";
+import {Milestones} from "./components/Milestones";
+
 
 interface RequireAuthProps {
   children: JSX.Element;
@@ -25,6 +27,7 @@ export const Router = () => {
   // note that Home is probably the only route that does not need user to be signed in (auth)
   const routes = [
     { element: <Home />, path: "/", auth: false },
+    { element: <Milestones />, path: "/milestones", auth: false },
     { element: <JournalEntry />, path: "/journal/post", auth: true },
   ];
 

@@ -22,6 +22,7 @@ export default function App() {
   // add links to go into the navigation bar here
   const navigation = [
     { to: "/", auth: false, name: "Home" },
+    { to: "/milestones", auth: false, name: "Milestones" },
     { to: "/journal/post", auth: true, name: "Journal" },
   ];
 
