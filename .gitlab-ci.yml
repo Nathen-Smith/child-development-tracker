@@ -1,7 +1,7 @@
 image: node:14.17
 
 variables:
-  PUBLIC_URL: /child-dev-tracker
+  PUBLIC_URL: /cs498rk_final
 
 cache:
   paths:
