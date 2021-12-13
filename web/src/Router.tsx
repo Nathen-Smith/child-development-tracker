@@ -4,6 +4,7 @@ import { useUser } from "reactfire";
 
 import { JournalEntry } from "./components/JournalEntry";
 import { Home } from "./components/Home";
+import { Test } from "./components/Test";
 
 interface RequireAuthProps {
   children: JSX.Element;
@@ -26,6 +27,7 @@ export const Router = () => {
   const routes = [
     { element: <Home />, path: "/", auth: false },
     { element: <JournalEntry />, path: "/journal/post", auth: true },
+    { element: <Test />, path: "/test", auth: true },
   ];
 
   return (

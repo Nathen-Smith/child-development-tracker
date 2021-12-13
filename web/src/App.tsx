@@ -23,6 +23,7 @@ export default function App() {
   const navigation = [
     { to: "/", auth: false, name: "Home" },
     { to: "/journal/post", auth: true, name: "Journal" },
+    { to: "/test", auth: true, name: "Test" },
   ];
 
   const links = (
