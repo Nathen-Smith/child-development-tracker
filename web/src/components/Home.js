@@ -88,7 +88,7 @@ export function Home(props) {
           Update Milestones
         </button>
       </div>
-        <div className='overflow-scroll pt-12' style={{ 'height': '25vh' }}>
+        <div className='overflow-scroll pt-12' style={{ 'height': '88vh' }}>
           {console.log("dataValue:" + dataValue)}
         {
         
