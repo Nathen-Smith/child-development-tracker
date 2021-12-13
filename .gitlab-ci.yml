@@ -6,14 +6,7 @@ variables:
 cache:
   paths:
     - web/node_modules
-
-cache:
-  -key:
-    files:
-      - package-lock.json
-  paths:
-    - web/
-
+    - web/package-lock.json
 
 stages:
   - deploy
