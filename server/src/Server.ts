@@ -10,7 +10,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 const corsOptions = {
-  origin: process.env.PROD === "true" ? "https://nathen-smith.gitlab.io/" : "*",
+  origin:
+    process.env.NODE_ENV === "production"
+      ? "https://nathen-smith.gitlab.io/"
+      : "*",
 };
 app.use(cors(corsOptions));
 app.use("/api", baseRouter);

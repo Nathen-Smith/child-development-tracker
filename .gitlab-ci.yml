@@ -2,6 +2,7 @@ image: node:14.17
 
 variables:
   PUBLIC_URL: /cs498rk_final
+  NODE_ENV: production
 
 cache:
   paths:

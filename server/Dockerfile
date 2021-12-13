@@ -9,7 +9,7 @@ RUN npm install
 COPY . .
 
 ENV PORT=8080
-ENV PROD=true
+ENV NODE_ENV=production
 
 EXPOSE 8080
 
