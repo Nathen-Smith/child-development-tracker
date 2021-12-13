@@ -9,13 +9,7 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-const corsOptions = {
-  origin:
-    process.env.NODE_ENV === "production"
-      ? "https://nathen-smith.gitlab.io/"
-      : "*",
-};
-app.use(cors(corsOptions));
+app.use(cors());
 app.use("/api", baseRouter);
 
 // Use this code snippet in your app.
