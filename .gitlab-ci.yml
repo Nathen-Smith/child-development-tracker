@@ -2,7 +2,7 @@ image: node:14
 
 variables:
   PUBLIC_URL: /cs498rk_final
-  PRODUCTION: true
+  REACT_APP_ENV: production
 
 cache:
   paths:
