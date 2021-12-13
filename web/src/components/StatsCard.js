@@ -15,6 +15,29 @@ const image1 = require('./img/image1.png');
 
 export function StatsCard(props) {
 
+    const [dataValue, setDataValue] = useState([]);
+
+    useEffect(() => {
+      console.log('http://localhost:8080/api/journal?where={"email": "alz3@illinois.edu"}');
+      axios.get('http://localhost:8080/api/journal?where={"email": "alz3@illinois.edu"}')
+        .then(function (response) {
+          // setdataValue(response.data);
+          console.log(response.data['data']);
+          setDataValue(response.data['data']);
+          console.log('dataValue')
+          // console.log(dataValue)
+  
+          
+          // setIdNumber(response.data.id)
+          // console.log(idNumber)
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }, [props.name]);
+
+
+
     return (
         <div class="relative grid grid-cols-1 gap-4 p-4 mb-8 border rounded-lg bg-white shadow-lg">
             <div class="relative flex gap-4">

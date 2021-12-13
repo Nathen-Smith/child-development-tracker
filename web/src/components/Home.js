@@ -1,6 +1,6 @@
 // import logo from './logo.svg';
 import './App.css';
-// import { React, useEffect, useState } from "react";
+import { React, useEffect, useState } from "react";
 import PropTypes from 'prop-types';
 import { StatsCard } from './StatsCard';
 import { JournalCard } from './JournalCard';
@@ -17,17 +17,32 @@ const axios = require('axios');
 // const image2 = require('./img/image2.png');
 // const image3 = require('./img/image3.png');
 
-
+  
 
 
 export function Home(props) {
 
+  const [dataValue, setDataValue] = useState([]);
 
-  // const history = useHistory();
+  useEffect(() => {
+    console.log('http://localhost:8080/api/journal?where={"email": "alz3@illinois.edu"}');
+    axios.get('http://localhost:8080/api/journal?where={"email": "alz3@illinois.edu"}')
+      .then(function (response) {
+        // setdataValue(response.data);
+        console.log(response.data['data']);
+        setDataValue(response.data['data']);
+        console.log('dataValue')
+        // console.log(dataValue)
 
-  // [url=https://imgbb.com/][img]https://i.ibb.co/HpXknVP/image1.png[/img][/url]
-// [url=https://imgbb.com/][img]https://i.ibb.co/26zN4bM/image2.png[/img][/url]
-// [url=https://imgbb.com/][img]https://i.ibb.co/NtSHHYj/image3.png[/img][/url]
+        
+        // setIdNumber(response.data.id)
+        // console.log(idNumber)
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }, []);
+
 
 
   return (
@@ -63,7 +78,7 @@ export function Home(props) {
 
 
       </div>
-      <div>
+      <div className='w-full'>
 
       <div class="flex-auto flex flex-row-reverse mt-4 mr-12" style={{ 'height': '5vh' }}>
         <button class="h-10 px-6 font-semibold rounded-md bg-indigo-700 text-white" type="submit">
@@ -73,25 +88,18 @@ export function Home(props) {
           Update Milestones
         </button>
       </div>
-        <div className='overflow-scroll pt-12' style={{ 'height': '88vh' }}>
-          <JournalCard />
-          <JournalCard />
-          <JournalCard />
-          <JournalCard />
-          <JournalCard />
-          <JournalCard />
+        <div className='overflow-scroll pt-12' style={{ 'height': '25vh' }}>
+          {console.log("dataValue:" + dataValue)}
+        {
+        
+        dataValue.map((entry) => {
+          return <JournalCard text={entry.body} title={entry.title} createdAt={entry.createdAt}/>
+        })}
+
         </div>
 
       </div>
-
-
-
-
     </div>
-
-
-    // </div>
-    // </div>
 
   )
 }
