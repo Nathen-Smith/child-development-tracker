@@ -7,14 +7,8 @@ import { BrowserRouter } from "react-router-dom";
 import { AuthProvider, FirebaseAppProvider } from "reactfire";
 import { getAuth } from "firebase/auth";
 import app, { firebaseConfig } from "./config";
-import axios from "axios";
 
 import "./index.css";
-
-axios.defaults.baseURL =
-  process.env.NODE_ENV === "production"
-    ? "https://nathensmith-wpfp-server-6v9xp.ondigitalocean.app/api"
-    : "http://localhost:8080/api";
 
 const auth = getAuth(app);
 
