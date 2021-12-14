@@ -12,46 +12,55 @@ const axios = require("axios");
 // const image1 = require("/assets/image1.png");
 
 export function StatsCard(props) {
+  const [dataValue, setDataValue] = useState([]);
 
-    const [dataValue, setDataValue] = useState([]);
+  // useEffect(() => {
+  //   console.log(
+  //     'http://localhost:8080/api/journal?where={"email": "alz3@illinois.edu"}'
+  //   );
+  //   axios
+  //     .get(
+  //       'http://localhost:8080/api/journal?where={"email": "alz3@illinois.edu"}'
+  //     )
+  //     .then(function (response) {
+  //       // setdataValue(response.data);
+  //       console.log(response.data["data"]);
+  //       setDataValue(response.data["data"]);
+  //       console.log("dataValue");
+  //       // console.log(dataValue)
 
-    useEffect(() => {
-      console.log('http://localhost:8080/api/journal?where={"email": "alz3@illinois.edu"}');
-      axios.get('http://localhost:8080/api/journal?where={"email": "alz3@illinois.edu"}')
-        .then(function (response) {
-          // setdataValue(response.data);
-          console.log(response.data['data']);
-          setDataValue(response.data['data']);
-          console.log('dataValue')
-          // console.log(dataValue)
-  
-          
-          // setIdNumber(response.data.id)
-          // console.log(idNumber)
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-    }, [props.name]);
+  //       // setIdNumber(response.data.id)
+  //       // console.log(idNumber)
+  //     })
+  //     .catch(function (error) {
+  //       console.log(error);
+  //     });
+  // }, [props.name]);
 
-
-
-    return (
-        <div class="relative grid grid-cols-1 gap-4 p-4 mb-8 border rounded-lg bg-white shadow-lg">
-            <div class="relative flex gap-4">
-                <div class="flex flex-col w-full">
-                    <div class="flex flex-row justify-between">
-                        <p class="relative text-xl whitespace-nowrap truncate overflow-hidden mr-12" style={{'width': '240px'}}>{props.name}</p>
-                        <Badge style={{'height': "20px"}} class="mt-6 ml-6" bg={props.color}>{props.timeline + " months"}</Badge>
-
-                    </div>
-                </div>
-            </div>
-            
-            <ProgressBar now={50} label={`${50}%`} variant={props.color}  />
-            {/* <p class="-mt-4 text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. <br />Maxime quisquam vero adipisci beatae voluptas dolor ame.</p> */}
+  return (
+    <div className="relative grid grid-cols-1 gap-4 p-4 mb-8 border rounded-lg bg-white shadow-lg">
+      <div className="relative flex gap-4">
+        <div className="flex flex-col w-full">
+          <div className="flex flex-row justify-between">
+            <p
+              className="relative text-xl whitespace-nowrap truncate overflow-hidden mr-12"
+              style={{ width: "240px" }}
+            >
+              {props.name}
+            </p>
+            <Badge
+              style={{ height: "20px" }}
+              className="mt-6 ml-6"
+              bg={props.color}
+            >
+              {props.timeline + " months"}
+            </Badge>
+          </div>
         </div>
       </div>
+
+      <ProgressBar now={50} label={`${50}%`} variant={props.color} />
+      {/* <p className="-mt-4 text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. <br />Maxime quisquam vero adipisci beatae voluptas dolor ame.</p> */}
 
       <ProgressBar now={50} label={`${50}%`} variant={props.color} />
       {/* <p className="-mt-4 text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. <br />Maxime quisquam vero adipisci beatae voluptas dolor ame.</p> */}
@@ -62,6 +71,8 @@ export function StatsCard(props) {
 StatsCard.propTypes = {
   name: PropTypes.string,
   index: PropTypes.number,
+  color: PropTypes.string,
+  timeline: PropTypes.number,
 };
 
 //   export ContextCard;

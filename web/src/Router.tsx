@@ -20,33 +20,31 @@ const RequireAuth: React.FC<RequireAuthProps> = ({ children }) => {
   const { data: user } = useUser();
   let location = useLocation();
 
-  if (!user) {
+  if (!user && location.pathname !== "/") {
     return <Navigate to="/" state={{ from: location }} />;
   }
   return children;
 };
 
 export const Router = () => {
-  // add routes here
-  // note that Home is probably the only route that does not need user to be signed in (auth)
   const routes = [
-    { element: <Home />, path: "/", auth: false },
-    { element: <Milestones />, path: "/milestones", auth: false },
-    { element: <Changes />, path: "/changes", auth: false },
-    { element: <Sleep />, path: "/sleep", auth: false },
-    { element: <Food />, path: "/food", auth: false },
-    { element: <JournalEntry />, path: "/journal/post", auth: true },
-    
+    { element: <Home />, path: "/" },
+    { element: <Milestones />, path: "/milestones" },
+    { element: <Changes />, path: "/changes" },
+    { element: <Sleep />, path: "/sleep" },
+    { element: <Food />, path: "/food" },
+    { element: <JournalEntry />, path: "/journal/post" },
+    { element: <Test />, path: "/test" },
   ];
 
   return (
     <Routes>
-      {routes.map(({ element, path, auth }) => {
+      {routes.map(({ element, path }) => {
         return (
           <Route
             key={path}
             path={path}
-            element={auth ? <RequireAuth>{element}</RequireAuth> : element}
+            element={<RequireAuth>{element}</RequireAuth>}
           />
         );
       })}

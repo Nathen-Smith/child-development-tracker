@@ -20,12 +20,13 @@ export default function App() {
   const { data: user } = useUser();
   const pathname = useLocation().pathname;
   // add links to go into the navigation bar here
+  // auth determines what links are shown in nav bar when signed in or not
   const navigation = [
     { to: "/", auth: false, name: "Home" },
-    { to: "/milestones", auth: false, name: "Milestones" },
-    { to: "/changes", auth: false, name: "Changes" },
-    { to: "/sleep", auth: false, name: "Sleep" },
-    { to: "/food", auth: false, name: "Food" },
+    { to: "/milestones", auth: true, name: "Milestones" },
+    { to: "/changes", auth: true, name: "Changes" },
+    { to: "/sleep", auth: true, name: "Sleep" },
+    { to: "/food", auth: true, name: "Food" },
     { to: "/journal/post", auth: true, name: "Journal" },
     { to: "/test", auth: true, name: "Test" },
   ];

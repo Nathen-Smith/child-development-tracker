@@ -5,15 +5,25 @@ import {
   Auth,
 } from "firebase/auth";
 import { useFirebaseApp } from "reactfire";
+import axios from "../../axios";
 
 async function buttonSignIn(auth: Auth) {
   const provider = new GoogleAuthProvider();
+
   try {
     const result = await signInWithPopup(auth, provider);
     const credential = GoogleAuthProvider.credentialFromResult(result);
     if (!credential) throw new Error();
+    const user = result.user;
+
+    // post regardless if exists or not
+    await axios.post("/user", {
+      email: user?.email,
+      name: user?.displayName,
+    });
+    return;
   } catch (err) {
-    // const errorMessage = err.message;
+    console.log(err);
   }
 }
 

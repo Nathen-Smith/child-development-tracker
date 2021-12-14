@@ -3,7 +3,8 @@ import StatusCodes from "http-status-codes";
 
 import Journal from "../models/Journal";
 
-const { OK, CREATED, NOT_FOUND, BAD_REQUEST, INTERNAL_SERVER_ERROR } = StatusCodes;
+const { OK, CREATED, NOT_FOUND, BAD_REQUEST, INTERNAL_SERVER_ERROR } =
+  StatusCodes;
 
 /**
  * Sends a GET request to the Journal collection and returns the response
@@ -12,7 +13,7 @@ const { OK, CREATED, NOT_FOUND, BAD_REQUEST, INTERNAL_SERVER_ERROR } = StatusCod
  * @returns json formatted response with status code
  */
 export async function getJournal(req: Request, res: Response) {
-  let {where, sort, select, skip, limit, count} = req.query;
+  let { where, sort, select, skip, limit, count } = req.query;
   let query = {} as any;
   query.options = {};
   if (where) query.where = JSON.parse(where as string);
@@ -23,15 +24,19 @@ export async function getJournal(req: Request, res: Response) {
   if (count) query.options.count = JSON.parse(count as string);
 
   try {
-    let find = await Journal.find(query.where, query.select, query.options);
+    const journal = await Journal.find(
+      query.where,
+      query.select,
+      query.options
+    );
     return res.status(OK).json({
-      message: 'GET successful',
-      data: find
+      message: "GET successful",
+      data: journal,
     });
   } catch (err) {
     return res.status(INTERNAL_SERVER_ERROR).json({
-      message: 'GET failed',
-      data: []
+      message: "GET failed",
+      data: [],
     });
   }
 }
@@ -45,27 +50,27 @@ export async function getJournal(req: Request, res: Response) {
 export async function createJournal(req: Request, res: Response) {
   if (!req.body.title || !req.body.body || !req.body.email) {
     return res.status(BAD_REQUEST).json({
-      message: 'POST failed: [title, timeline, email] all required',
-      data: []
+      message: "POST failed: [title, timeline, email] all required",
+      data: [],
     });
   }
-  
+
   const newJournal = new Journal({
-    'title': req.body.title,
-    'body': req.body.body,
-    'email': req.body.email
+    title: req.body.title,
+    body: req.body.body,
+    email: req.body.email,
   });
 
   try {
     let save = await newJournal.save();
     return res.status(CREATED).json({
-      message: 'POST successful',
-      data: save
+      message: "POST successful",
+      data: save,
     });
   } catch (err) {
     return res.status(INTERNAL_SERVER_ERROR).json({
-      message: 'POST failed',
-      data: []
+      message: "POST failed",
+      data: [],
     });
   }
 }
@@ -80,25 +85,25 @@ export async function createJournal(req: Request, res: Response) {
 export async function updateJournal(req: Request, res: Response) {
   if (!req.body._id) {
     return res.status(BAD_REQUEST).json({
-      message: 'PUT failed: _id required',
-      data: []
+      message: "PUT failed: _id required",
+      data: [],
     });
   }
 
   const filter = {
-    _id: req.body._id
+    _id: req.body._id,
   };
 
   try {
     let find = await Journal.findOneAndUpdate(filter, req.body);
     return res.status(OK).json({
-      message: 'PUT successful',
-      data: find
+      message: "PUT successful",
+      data: find,
     });
   } catch (err) {
     return res.status(NOT_FOUND).json({
-      message: 'PUT failed: specified journal entry does not exist',
-      data: []
+      message: "PUT failed: specified journal entry does not exist",
+      data: [],
     });
   }
 }
@@ -113,25 +118,25 @@ export async function updateJournal(req: Request, res: Response) {
 export async function deleteJournal(req: Request, res: Response) {
   if (!req.body._id) {
     return res.status(BAD_REQUEST).json({
-      message: 'DELETE failed: _id required',
-      data: []
+      message: "DELETE failed: _id required",
+      data: [],
     });
   }
 
   const filter = {
-    _id: req.body._id
+    _id: req.body._id,
   };
 
   try {
     const deleted = await Journal.deleteOne(filter);
     return res.status(OK).json({
-      message: 'DELETE successful',
-      data: deleted
+      message: "DELETE successful",
+      data: deleted,
     });
   } catch (err) {
     return res.status(NOT_FOUND).json({
-      message: 'DELETE failed: specified journal entry does not exist',
-      data: []
+      message: "DELETE failed: specified journal entry does not exist",
+      data: [],
     });
   }
 }
