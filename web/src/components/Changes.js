@@ -1,18 +1,16 @@
 // import logo from './logo.svg';
-import "./App.css";
-import { React, useEffect, useState } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { StatsCard } from "./StatsCard";
+// import { StatsCard } from "./StatsCard";
 import { JournalCard } from "./JournalCard";
-import {
-  ProgressBar,
-  Badge,
-  Form,
-  Col,
-  Row,
-  Button,
-  FloatingLabel,
-} from "react-bootstrap";
+
+// import ProgressBar from "react-bootstrap/ProgressBar";
+import Badge from "react-bootstrap/Badge";
+import Form from "react-bootstrap/Form";
+import Row from "react-bootstrap/Row";
+// import Col from "react-bootstrap/Col";
+// import Button from "react-bootstrap/Button";
+import FloatingLabel from "react-bootstrap/FloatingLabel";
 
 // import { useHistory } from "react-router-dom";
 
@@ -21,7 +19,7 @@ import {
 // import Navbar from 'react-bootstrap/Navbar'
 // import Nav from 'react-bootstrap/Nav'
 
-const axios = require("axios");
+import axios from "../axios";
 // const image1 = require('./img/image1.png');
 // const image2 = require('./img/image2.png');
 // const image3 = require('./img/image3.png');
