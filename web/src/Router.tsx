@@ -5,10 +5,10 @@ import { useUser } from "reactfire";
 import { JournalEntry } from "./components/JournalEntry";
 import { Home } from "./components/Home";
 
-import { Milestones } from "./components/Milestones";
-import { Changes } from "./components/Changes";
-import { Sleep } from "./components/Sleep";
-import { Food } from "./components/Food";
+// import { Milestones } from "./components/Milestones";
+// import { Changes } from "./components/Changes";
+// import { Sleep } from "./components/Sleep";
+// import { Food } from "./components/Food";
 import { Test } from "./components/Test";
 
 interface RequireAuthProps {
@@ -31,10 +31,10 @@ export const Router = () => {
   // note that Home is probably the only route that does not need user to be signed in (auth)
   const routes = [
     { element: <Home />, path: "/", auth: false },
-    { element: <Milestones />, path: "/milestones", auth: false },
-    { element: <Changes />, path: "/changes", auth: false },
-    { element: <Sleep />, path: "/sleep", auth: false },
-    { element: <Food />, path: "/food", auth: false },
+    // { element: <Milestones />, path: "/milestones", auth: false },
+    // { element: <Changes />, path: "/changes", auth: false },
+    // { element: <Sleep />, path: "/sleep", auth: false },
+    // { element: <Food />, path: "/food", auth: false },
     { element: <JournalEntry />, path: "/journal/post", auth: true },
     { element: <Test />, path: "/test", auth: true },
   ];
