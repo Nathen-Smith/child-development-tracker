@@ -1,22 +1,21 @@
-// import logo from './logo.svg';
 import "./App.css";
 import React, { useState } from "react";
-import PropTypes from "prop-types";
 import { JournalCard } from "./JournalCard";
 import { Badge, Form, Row, FloatingLabel } from "react-bootstrap";
 
 import axios from "../axios";
 
-export function Changes(props) {
+interface ChangesProps {
+  color: string;
+  timeline: number;
+}
+
+export const Changes: React.FC<ChangesProps> = ({ color, timeline }) => {
   const [value, setValue] = useState("wet");
-  const [hour, setHour] = useState();
-  const [comments, setComments] = useState();
+  const [hour, setHour] = useState("");
+  const [comments, setComments] = useState("");
 
   function saveChanges() {
-    console.log(value);
-    console.log(hour);
-    console.log(comments);
-
     axios
       .post("/changes", {
         consistency: value,
@@ -46,9 +45,9 @@ export function Changes(props) {
                 <Badge
                   style={{ height: "20px" }}
                   className="mt-6 ml-6"
-                  bg={props.color}
+                  bg={color}
                 >
-                  {props.timeline + " months"}
+                  {timeline + " months"}
                 </Badge>
               </div>
             </div>
@@ -63,7 +62,10 @@ export function Changes(props) {
 
               <Form.Group as={Row} className="mb-3 ml-3 mr-3">
                 <Form.Select
-                  // onChange={onInput}
+                  onChange={(e) => {
+                    e.preventDefault();
+                    setValue(e.target.value);
+                  }}
                   className="me-sm-2"
                   id="inlineFormCustomSelect"
                 >
@@ -87,7 +89,10 @@ export function Changes(props) {
                 <Form.Control
                   type=""
                   placeholder="YYYY-MM-DD HH:MM"
-                  // onChange={onInputHour}
+                  onChange={(e) => {
+                    e.preventDefault();
+                    setHour(e.target.value);
+                  }}
                 />
               </FloatingLabel>
 
@@ -107,13 +112,14 @@ export function Changes(props) {
                   as="textarea"
                   placeholder="Leave a comment here"
                   style={{ height: "100px" }}
-                  // onChange={onInputComments}
+                  onChange={(e) => {
+                    e.preventDefault();
+                    setComments(e.target.value);
+                  }}
                 />
               </FloatingLabel>
 
               <Form.Group as={Row} className="mb-3 ml-6 mr-6 mt-12 ">
-                {/* <Button type="submit">Save</Button> */}
-
                 <button
                   className="h-10 px-6 font-semibold rounded-md bg-indigo-700 text-white"
                   type="submit"
@@ -123,7 +129,6 @@ export function Changes(props) {
                 </button>
               </Form.Group>
             </Form>
-            {/* <p className="-mt-4 text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. <br />Maxime quisquam vero adipisci beatae voluptas dolor ame.</p> */}
           </div>
         </div>
         <div>
@@ -139,9 +144,4 @@ export function Changes(props) {
       </div>
     </div>
   );
-}
-
-Changes.propTypes = {
-  name: PropTypes.string,
-  index: PropTypes.number,
 };

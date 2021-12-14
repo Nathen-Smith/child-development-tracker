@@ -28,4 +28,3 @@ pages:
 
   only:
     - main
-    - ts-pages
