@@ -156,6 +156,7 @@ export function Changes(props) {
           <JournalCard />
           <JournalCard />
           <JournalCard />
+          
         </div>
 
       </div>
