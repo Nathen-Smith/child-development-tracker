@@ -1,38 +1,13 @@
-// import logo from './logo.svg';
-import "./App.css";
-// import { React, useEffect, useState } from "react";
-import PropTypes from "prop-types";
-import { StatsCard } from "./StatsCard";
+import React from "react";
 import { JournalCard } from "./JournalCard";
-import {
-  ProgressBar,
-  Badge,
-  Form,
-  Col,
-  Row,
-  Button,
-  FloatingLabel,
-} from "react-bootstrap";
+import { Badge, Form, Row, Button, FloatingLabel } from "react-bootstrap";
 
-// import { useHistory } from "react-router-dom";
+interface SleepProps {
+  color: string;
+  timeline: number;
+}
 
-// import 'bootstrap/dist/css/bootstrap.min.css';
-// import { Card, Button, Accordion, Container, Col, Row, Image, DropdownButton, Dropdown, InputGroup, FormControl } from 'react-bootstrap';
-// import Navbar from 'react-bootstrap/Navbar'
-// import Nav from 'react-bootstrap/Nav'
-
-const axios = require("axios");
-// const image1 = require('./img/image1.png');
-// const image2 = require('./img/image2.png');
-// const image3 = require('./img/image3.png');
-
-export function Sleep(props) {
-  // const history = useHistory();
-
-  // [url=https://imgbb.com/][img]https://i.ibb.co/HpXknVP/image1.png[/img][/url]
-  // [url=https://imgbb.com/][img]https://i.ibb.co/26zN4bM/image2.png[/img][/url]
-  // [url=https://imgbb.com/][img]https://i.ibb.co/NtSHHYj/image3.png[/img][/url]
-
+export const Sleep: React.FC<SleepProps> = ({ color, timeline }) => {
   return (
     <div className="bg-white flex overflow-hidden">
       <div className="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
@@ -49,9 +24,9 @@ export function Sleep(props) {
                 <Badge
                   style={{ height: "20px" }}
                   className="mt-6 ml-6"
-                  bg={props.color}
+                  bg={color}
                 >
-                  {props.timeline + " months"}
+                  {timeline + " months"}
                 </Badge>
               </div>
             </div>
@@ -91,7 +66,7 @@ export function Sleep(props) {
               className="relative text-lg whitespace-nowrap truncate overflow-hidden mr-12 mb-2 mt-6"
               style={{ width: "240px" }}
             >
-              Notes & Comments
+              {"Notes & Comments"}
             </p>
 
             <FloatingLabel
@@ -128,11 +103,6 @@ export function Sleep(props) {
     // </div>
     // </div>
   );
-}
-
-Sleep.propTypes = {
-  name: PropTypes.string,
-  index: PropTypes.number,
 };
 
 //   export ContextCard;

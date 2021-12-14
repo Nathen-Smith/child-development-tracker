@@ -1,5 +1,4 @@
 // import logo from './logo.svg';
-import "./App.css";
 // import { React, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { StatsCard } from "./StatsCard";

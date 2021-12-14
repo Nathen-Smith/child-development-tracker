@@ -1,4 +1,3 @@
-import "./App.css";
 import React, { useState } from "react";
 import { JournalCard } from "./JournalCard";
 import { Badge, Form, Row, FloatingLabel } from "react-bootstrap";

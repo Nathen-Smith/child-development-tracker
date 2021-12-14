@@ -31,7 +31,7 @@ export const Router = () => {
     { element: <Home />, path: "/" },
     { element: <Milestones />, path: "/milestones" },
     { element: <Changes timeline={1} color={"primary"} />, path: "/changes" },
-    { element: <Sleep />, path: "/sleep" },
+    { element: <Sleep timeline={1} color={"primary"} />, path: "/sleep" },
     { element: <Food />, path: "/food" },
     { element: <JournalEntry />, path: "/journal/post" },
     { element: <Test />, path: "/test" },

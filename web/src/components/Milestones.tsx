@@ -1,4 +1,3 @@
-import "./App.css";
 import { StatsCard } from "./StatsCard";
 import { MilestoneCard } from "./MilestoneCard";
 import { MilestonesData } from "./MilestonesData";

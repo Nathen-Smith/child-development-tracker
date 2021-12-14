@@ -1,7 +1,4 @@
-// import logo from './logo.svg';
-import "./App.css";
 import React, { useEffect, useState } from "react";
-import PropTypes from "prop-types";
 import { StatsCard } from "./StatsCard";
 import { JournalCard } from "./JournalCard";
 import axios from "../axios";
@@ -101,9 +98,4 @@ export const Home = () => {
       </div>
     </div>
   );
-};
-
-Home.propTypes = {
-  name: PropTypes.string,
-  index: PropTypes.number,
 };
