@@ -1,5 +1,5 @@
 // import logo from './logo.svg';
-import './App.css';
+import "./App.css";
 // import { React, useEffect, useState } from "react";
 import PropTypes from 'prop-types';
 import { StatsCard } from './StatsCard';
@@ -13,23 +13,17 @@ import { MilestonesData } from './MilestonesData';
 // import Navbar from 'react-bootstrap/Navbar'
 // import Nav from 'react-bootstrap/Nav'
 
-const axios = require('axios');
+const axios = require("axios");
 // const image1 = require('./img/image1.png');
 // const image2 = require('./img/image2.png');
 // const image3 = require('./img/image3.png');
 
-
-
-
 export function Milestones(props) {
-
-
   // const history = useHistory();
 
   // [url=https://imgbb.com/][img]https://i.ibb.co/HpXknVP/image1.png[/img][/url]
   // [url=https://imgbb.com/][img]https://i.ibb.co/26zN4bM/image2.png[/img][/url]
   // [url=https://imgbb.com/][img]https://i.ibb.co/NtSHHYj/image3.png[/img][/url]
-
 
   return (
     <div>
