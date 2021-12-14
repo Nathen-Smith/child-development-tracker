@@ -14,25 +14,16 @@ import {
   FloatingLabel,
 } from "react-bootstrap";
 
-// import { useHistory } from "react-router-dom";
+// import axios from "../axios";
 
-// import 'bootstrap/dist/css/bootstrap.min.css';
-// import { Card, Button, Accordion, Container, Col, Row, Image, DropdownButton, Dropdown, InputGroup, FormControl } from 'react-bootstrap';
-// import Navbar from 'react-bootstrap/Navbar'
-// import Nav from 'react-bootstrap/Nav'
+// interface ChangesProps {
+//   name: string;
+//   index: number;
+//   color: string;
+//   timeline: string;
+// }
 
-const axios = require("axios");
-// const image1 = require('./img/image1.png');
-// const image2 = require('./img/image2.png');
-// const image3 = require('./img/image3.png');
-
-export function Food(props) {
-  // const history = useHistory();
-
-  // [url=https://imgbb.com/][img]https://i.ibb.co/HpXknVP/image1.png[/img][/url]
-  // [url=https://imgbb.com/][img]https://i.ibb.co/26zN4bM/image2.png[/img][/url]
-  // [url=https://imgbb.com/][img]https://i.ibb.co/NtSHHYj/image3.png[/img][/url]
-
+export const Changes = () => {
   return (
     <div className="bg-white flex overflow-hidden">
       <div className="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
@@ -44,14 +35,15 @@ export function Food(props) {
                   className="relative text-xl whitespace-nowrap truncate overflow-hidden mr-12"
                   style={{ width: "240px" }}
                 >
-                  Food
+                  Changes
                 </p>
                 <Badge
                   style={{ height: "20px" }}
                   className="mt-6 ml-6"
-                  bg={props.color}
+                  // bg={color}
                 >
-                  {props.timeline + " months"}
+                  {/* {timeline + " months"} */}
+                  months
                 </Badge>
               </div>
             </div>
@@ -62,30 +54,21 @@ export function Food(props) {
               className="relative text-lg whitespace-nowrap truncate overflow-hidden mr-12 mb-2"
               style={{ width: "240px" }}
             >
-              Type Of Food
+              Consistency
             </p>
 
             <Form.Group as={Row} className="mb-3 ml-3 mr-3">
-              <Row>
-                <Col>
-                  <Form.Check type="checkbox" label="Milk" />
-                  <Form.Check type="checkbox" label="Formula" />
-                  <Form.Check type="checkbox" label="Dairy" />
-                  <Form.Check type="checkbox" label="Fruit" />
-                </Col>
-                <Col>
-                  <Form.Check type="checkbox" label="Meat" />
-                  <Form.Check type="checkbox" label="Bread" />
-                  <Form.Check type="checkbox" label="Juice" />
-                </Col>
-              </Row>
+              <Form.Select className="me-sm-2" id="inlineFormCustomSelect">
+                <option value="0">Wet</option>
+                <option value="1">Dry</option>
+              </Form.Select>
             </Form.Group>
 
             <p
               className="relative text-lg whitespace-nowrap truncate overflow-hidden mr-12 mb-2 mt-6"
               style={{ width: "240px" }}
             >
-              Time Of Feeding
+              Time Of Change
             </p>
 
             <FloatingLabel
@@ -119,7 +102,6 @@ export function Food(props) {
               <Button type="submit">Save</Button>
             </Form.Group>
           </Form>
-          {/* <p className="-mt-4 text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. <br />Maxime quisquam vero adipisci beatae voluptas dolor ame.</p> */}
         </div>
       </div>
       <div>
@@ -133,15 +115,5 @@ export function Food(props) {
         </div>
       </div>
     </div>
-
-    // </div>
-    // </div>
   );
-}
-
-Food.propTypes = {
-  name: PropTypes.string,
-  index: PropTypes.number,
 };
-
-//   export ContextCard;
