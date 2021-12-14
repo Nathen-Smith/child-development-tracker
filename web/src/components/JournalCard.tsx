@@ -1,21 +1,29 @@
 import React from "react";
-import PropTypes from "prop-types";
-// import { useHistory } from "react-router-dom";
 
 import "bootstrap/dist/css/bootstrap.min.css";
-// import { ProgressBar, Badge } from "react-bootstrap";
 
-export function JournalCard(props) {
+interface JournalCardProps {
+  name?: string;
+  text: string;
+  title: string;
+  createdAt: string;
+}
+
+export const JournalCard: React.FC<JournalCardProps> = ({
+  title,
+  text,
+  createdAt,
+}) => {
   return (
     <div className="relative grid grid-cols-1 gap-4 p-4 mb-8 border rounded-lg bg-white shadow-lg mr-12 ml-12 w-12/12	">
       <div className="relative flex gap-4">
         <div className="flex flex-col w-full">
           <div className="flex flex-row justify-between">
             <p className="relative text-xl whitespace-nowrap truncate overflow-hidden">
-              {props.title}
+              {title}
             </p>
             <p className="relative text-xl whitespace-nowrap truncate overflow-hidden">
-              {new Date(props.createdAt).toLocaleDateString("en-us", {
+              {new Date(createdAt).toLocaleDateString("en-us", {
                 weekday: "short",
                 year: "numeric",
                 month: "short",
@@ -29,7 +37,7 @@ export function JournalCard(props) {
       </div>
 
       {/* <ProgressBar now={50} label={`${50}%`} variant={props.color}  /> */}
-      <p className="-mt-4 text-gray-500"> {props.text} </p>
+      <p className="-mt-4 text-gray-500"> {text} </p>
 
       {/* <ProgressBar now={50} label={`${50}%`} variant={props.color}  /> */}
       <p className="-mt-4 text-gray-500">
@@ -56,13 +64,4 @@ export function JournalCard(props) {
       </p>
     </div>
   );
-}
-
-JournalCard.propTypes = {
-  name: PropTypes.string,
-  text: PropTypes.string,
-  title: PropTypes.string,
-  createdAt: PropTypes.string,
 };
-
-//   export ContextCard;

@@ -90,12 +90,12 @@ export const Sleep: React.FC<SleepProps> = ({ color, timeline }) => {
       </div>
       <div>
         <div className="overflow-scroll pt-12" style={{ height: "94vh" }}>
-          <JournalCard />
-          <JournalCard />
-          <JournalCard />
-          <JournalCard />
-          <JournalCard />
-          <JournalCard />
+          <JournalCard text="text" title="title" createdAt="createdAt" />
+          <JournalCard text="text" title="title" createdAt="createdAt" />
+          <JournalCard text="text" title="title" createdAt="createdAt" />
+          <JournalCard text="text" title="title" createdAt="createdAt" />
+          <JournalCard text="text" title="title" createdAt="createdAt" />
+          <JournalCard text="text" title="title" createdAt="createdAt" />
         </div>
       </div>
     </div>

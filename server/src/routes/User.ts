@@ -25,10 +25,6 @@ export async function getUser(req: Request, res: Response) {
 
   try {
     const user = await User.find(query.where, query.select, query.options);
-    // if (!user || user.length === 0)
-    //   return res
-    //     .status(NOT_FOUND)
-    //     .json({ message: "GET: user does not exist", data: [] });
     return res.status(OK).json({
       message: "GET successful",
       data: user,
@@ -60,7 +56,6 @@ export async function createUser(req: Request, res: Response) {
     name: req.body.name,
     email: req.body.email,
   });
-  console.log(newUser);
 
   try {
     let save = await newUser.save();
