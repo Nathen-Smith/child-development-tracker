@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import { JournalCard } from "./JournalCard";
-import { Badge, Form, Row, FloatingLabel } from "react-bootstrap";
+
+import Badge from "react-bootstrap/Badge";
+import Form from "react-bootstrap/Form";
+import Row from "react-bootstrap/Row";
+import FloatingLabel from "react-bootstrap/FloatingLabel";
 
 import axios from "../axios";
 

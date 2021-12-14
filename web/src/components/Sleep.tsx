@@ -1,6 +1,11 @@
 import React from "react";
 import { JournalCard } from "./JournalCard";
-import { Badge, Form, Row, Button, FloatingLabel } from "react-bootstrap";
+
+import Badge from "react-bootstrap/Badge";
+import Form from "react-bootstrap/Form";
+import Row from "react-bootstrap/Row";
+import Button from "react-bootstrap/Button";
+import FloatingLabel from "react-bootstrap/FloatingLabel";
 
 interface SleepProps {
   color: string;

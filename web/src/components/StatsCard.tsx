@@ -1,6 +1,7 @@
 import React from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
-import { ProgressBar, Badge } from "react-bootstrap";
+
+import Badge from "react-bootstrap/Badge";
+import ProgressBar from "react-bootstrap/ProgressBar";
 
 interface StatsCardProps {
   name: string;

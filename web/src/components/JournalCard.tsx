@@ -1,7 +1,5 @@
 import React from "react";
 
-import "bootstrap/dist/css/bootstrap.min.css";
-
 interface JournalCardProps {
   name?: string;
   text: string;
