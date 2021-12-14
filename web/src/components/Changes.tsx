@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useUser } from "reactfire";
+
 import { JournalCard } from "./JournalCard";
 
 import Badge from "react-bootstrap/Badge";
@@ -18,18 +20,19 @@ export const Changes: React.FC<ChangesProps> = ({ color, timeline }) => {
   const [hour, setHour] = useState("");
   const [comments, setComments] = useState("");
 
-  function saveChanges() {
-    axios
-      .post("/changes", {
+  const { data: user } = useUser();
+
+  async function saveChanges() {
+    try {
+      await axios.post("/user", {
         consistency: value,
         time: new Date(hour),
         notes: comments,
-        email: "joe123@gmail.com",
-      })
-      .then(function (res) {})
-      .catch(function (error) {
-        console.log(error);
+        email: user?.email,
       });
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   return (
@@ -126,7 +129,7 @@ export const Changes: React.FC<ChangesProps> = ({ color, timeline }) => {
                 <button
                   className="h-10 px-6 font-semibold rounded-md bg-indigo-700 text-white"
                   type="submit"
-                  onClick={saveChanges}
+                  onClick={async () => saveChanges}
                 >
                   Save
                 </button>
