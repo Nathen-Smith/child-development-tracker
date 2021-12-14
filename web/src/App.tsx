@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from "react";
+import React from "react";
 
 import { Link, useLocation } from "react-router-dom";
 import { useUser } from "reactfire";
@@ -30,10 +30,13 @@ export default function App() {
     { to: "/test", auth: true, name: "Test" },
   ];
 
-  const links = (
+  const filteredNavLinks = (
     <>
-      {navigation.map(({ to, name, auth }) => {
-        if ((auth && user) || !auth)
+      {navigation
+        .filter(({ auth }) => {
+          return (auth && user) || !auth;
+        })
+        .map(({ to, name }) => {
           return (
             <Link
               key={name}
@@ -48,7 +51,7 @@ export default function App() {
               {name}
             </Link>
           );
-      })}
+        })}
     </>
   );
 
@@ -73,7 +76,7 @@ export default function App() {
 
                 <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
                   <div className="hidden sm:block sm">
-                    <div className="flex space-x-4">{links}</div>
+                    <div className="flex space-x-4">{filteredNavLinks}</div>
                   </div>
                 </div>
 
@@ -88,7 +91,7 @@ export default function App() {
             </div>
 
             <Disclosure.Panel className="sm:hidden">
-              <div className="px-2 pt-2 pb-3 space-y-1">{links}</div>
+              <div className="px-2 pt-2 pb-3 space-y-1">{filteredNavLinks}</div>
             </Disclosure.Panel>
           </>
         )}

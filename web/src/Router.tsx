@@ -44,6 +44,7 @@ export const Router = () => {
       {routes.map(({ element, path, auth }) => {
         return (
           <Route
+            key={path}
             path={path}
             element={auth ? <RequireAuth>{element}</RequireAuth> : element}
           />
