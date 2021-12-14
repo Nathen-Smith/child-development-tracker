@@ -13,6 +13,7 @@ import {
   Button,
   FloatingLabel,
 } from "react-bootstrap";
+import { useUser } from "reactfire";
 
 // import { useHistory } from "react-router-dom";
 
@@ -32,6 +33,22 @@ export function Food(props) {
   // [url=https://imgbb.com/][img]https://i.ibb.co/HpXknVP/image1.png[/img][/url]
   // [url=https://imgbb.com/][img]https://i.ibb.co/26zN4bM/image2.png[/img][/url]
   // [url=https://imgbb.com/][img]https://i.ibb.co/NtSHHYj/image3.png[/img][/url]
+
+  const { data: user } = useUser();
+  const [entries, setEntries] = useState([]);
+
+  const getFood = () => {
+    if (!user) return;
+    axios.get(`http://localhost:8080/api/food?where={"email": ${user.email}&sort={"createdAt": -1}}`)
+    .then(response => {
+      if (response.code == 200) {
+        setEntries(response.data['data']);
+      }
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
 
   return (
     <div className="bg-white flex overflow-hidden">

@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { StatsCard } from './StatsCard';
 import { JournalCard } from './JournalCard';
 import { ProgressBar, Badge, Form, Col, Row, Button, FloatingLabel } from 'react-bootstrap';
+import { useUser } from 'reactfire';
 
 // import { useHistory } from "react-router-dom";
 
@@ -56,6 +57,22 @@ export function Changes(props) {
       e.preventDefault()
       console.log(value)
       setValue()
+    }
+
+    const { data: user } = useUser();
+    const [entries, setEntries] = useState([]);
+
+    const getChanges = () => {
+      if (!user) return;
+      axios.get(`http://localhost:8080/api/changes?where={"email": ${user.email}&sort={"createdAt": -1}}`)
+      .then(response => {
+        if (response.code == 200) {
+          setEntries(response.data['data']);
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
     }
 
 
