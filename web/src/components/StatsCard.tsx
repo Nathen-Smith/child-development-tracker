@@ -1,17 +1,20 @@
-import { React, useEffect, useState } from "react";
-import PropTypes from "prop-types";
-// import { useHistory } from "react-router-dom";
-
+import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { ProgressBar, Badge } from "react-bootstrap";
-// import Navbar from 'react-bootstrap/Navbar'
-// import Nav from 'react-bootstrap/Nav'
 
-const axios = require("axios");
-// const image1 = require("/assets/image1.png");
+interface StatsCardProps {
+  name: string;
+  index?: number;
+  color: string;
+  timeline: number;
+}
 
-export function StatsCard(props) {
-  const [dataValue, setDataValue] = useState([]);
+export const StatsCard: React.FC<StatsCardProps> = ({
+  name,
+  color,
+  timeline,
+}) => {
+  // const [dataValue, setDataValue] = useState([]);
 
   // useEffect(() => {
   //   console.log(
@@ -45,33 +48,20 @@ export function StatsCard(props) {
               className="relative text-xl whitespace-nowrap truncate overflow-hidden mr-12"
               style={{ width: "240px" }}
             >
-              {props.name}
+              {name}
             </p>
-            <Badge
-              style={{ height: "20px" }}
-              className="mt-6 ml-6"
-              bg={props.color}
-            >
-              {props.timeline + " months"}
+            <Badge style={{ height: "20px" }} className="mt-6 ml-6" bg={color}>
+              {timeline + " months"}
             </Badge>
           </div>
         </div>
       </div>
 
-      <ProgressBar now={50} label={`${50}%`} variant={props.color} />
+      <ProgressBar now={50} label={`${50}%`} variant={color} />
       {/* <p className="-mt-4 text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. <br />Maxime quisquam vero adipisci beatae voluptas dolor ame.</p> */}
 
-      <ProgressBar now={50} label={`${50}%`} variant={props.color} />
+      <ProgressBar now={50} label={`${50}%`} variant={color} />
       {/* <p className="-mt-4 text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. <br />Maxime quisquam vero adipisci beatae voluptas dolor ame.</p> */}
     </div>
   );
-}
-
-StatsCard.propTypes = {
-  name: PropTypes.string,
-  index: PropTypes.number,
-  color: PropTypes.string,
-  timeline: PropTypes.number,
 };
-
-//   export ContextCard;
