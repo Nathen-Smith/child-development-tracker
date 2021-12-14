@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
-import bodyParser = require("body-parser");
+import bodyParser from "body-parser";
 
 import baseRouter from "./routes";
 
