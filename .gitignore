@@ -12,7 +12,6 @@
 !/web/**/*.*
 !/server/**/*.*
 !.gitlab-ci.yml
-!deprecated-ci.yml
 
 # below is default react gitignore
 
