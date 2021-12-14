@@ -16,7 +16,7 @@ const auth = getAuth(app);
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter basename="/cs498rk_final">
+    <BrowserRouter>
       <FirebaseAppProvider firebaseConfig={firebaseConfig}>
         <AuthProvider sdk={auth}>
           <App />
