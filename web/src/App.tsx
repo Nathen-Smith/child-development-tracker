@@ -27,6 +27,7 @@ export default function App() {
     { to: "/sleep", auth: false, name: "Sleep" },
     { to: "/food", auth: false, name: "Food" },
     { to: "/journal/post", auth: true, name: "Journal" },
+    { to: "/test", auth: true, name: "Test" },
   ];
 
   const links = (
