@@ -30,7 +30,7 @@ export const Router = () => {
   const routes = [
     { element: <Home />, path: "/" },
     { element: <Milestones />, path: "/milestones" },
-    { element: <Changes timeline={1} color={"primary"} />, path: "/changes" },
+    { element: <Changes />, path: "/changes" },
     { element: <Sleep timeline={1} color={"primary"} />, path: "/sleep" },
     { element: <Food timeline={1} color={"primary"} />, path: "/food" },
     { element: <JournalEntry />, path: "/journal/post" },

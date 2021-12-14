@@ -61,7 +61,7 @@ export const StatsCard: React.FC<StatsCardProps> = ({
       <ProgressBar now={50} label={`${50}%`} variant={color} />
       {/* <p className="-mt-4 text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. <br />Maxime quisquam vero adipisci beatae voluptas dolor ame.</p> */}
 
-      <ProgressBar now={50} label={`${50}%`} variant={color} />
+      {/* <ProgressBar now={50} label={`${50}%`} variant={color} /> */}
       {/* <p className="-mt-4 text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. <br />Maxime quisquam vero adipisci beatae voluptas dolor ame.</p> */}
     </div>
   );
