@@ -1,5 +1,5 @@
 import React, { useUser } from "reactfire";
-import axios from "axios";
+import axios from "../axios";
 import { JournalForm } from "./JournalForm";
 
 export const JournalEntry = () => {

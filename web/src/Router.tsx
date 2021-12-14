@@ -4,12 +4,12 @@ import { useUser } from "reactfire";
 
 import { JournalEntry } from "./components/JournalEntry";
 import { Home } from "./components/Home";
-import {Milestones} from "./components/Milestones";
-import {Changes} from "./components/Changes";
-import {Sleep} from "./components/Sleep";
-import {Food} from "./components/Food";
 
-
+import { Milestones } from "./components/Milestones";
+import { Changes } from "./components/Changes";
+import { Sleep } from "./components/Sleep";
+import { Food } from "./components/Food";
+import { Test } from "./components/Test";
 
 interface RequireAuthProps {
   children: JSX.Element;
@@ -44,6 +44,7 @@ export const Router = () => {
       {routes.map(({ element, path, auth }) => {
         return (
           <Route
+            key={path}
             path={path}
             element={auth ? <RequireAuth>{element}</RequireAuth> : element}
           />

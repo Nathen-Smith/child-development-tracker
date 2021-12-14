@@ -12,7 +12,7 @@ import { JournalCard } from './JournalCard';
 // import Navbar from 'react-bootstrap/Navbar'
 // import Nav from 'react-bootstrap/Nav'
 
-const axios = require('axios');
+const axios = require("axios");
 // const image1 = require('./img/image1.png');
 // const image2 = require('./img/image2.png');
 // const image3 = require('./img/image3.png');
@@ -46,37 +46,41 @@ export function Home(props) {
 
 
   return (
-
-
     <div className="bg-white flex overflow-hidden">
       <div className="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
         <div className="mx-auto w-full max-w-sm lg:w-96">
-          <h1 class="text-lg font-semibold text-gray-900">Child Development Monitor</h1>
-          <div class="columns-3 mt-6 flex flex-row">
-            <div class="column">
-              <img src='https://i.ibb.co/HpXknVP/image1.png' alt="logo" />
+          <h1 className="text-lg font-semibold text-gray-900">
+            Child Development Monitor
+          </h1>
+          <div className="columns-3 mt-6 flex flex-row">
+            <div className="column">
+              <img src="https://i.ibb.co/HpXknVP/image1.png" alt="logo" />
             </div>
-            <div class="column">
-              <div class="column">
-                <img src='https://i.ibb.co/26zN4bM/image2.png' alt="logo" />
+            <div className="column">
+              <div className="column">
+                <img src="https://i.ibb.co/26zN4bM/image2.png" alt="logo" />
               </div>
             </div>
-            <div class="column">
-              <div class="column">
-                <img src='https://i.ibb.co/NtSHHYj/image3.png' alt="logo" />
+            <div className="column">
+              <div className="column">
+                <img src="https://i.ibb.co/NtSHHYj/image3.png" alt="logo" />
               </div>
             </div>
           </div>
         </div>
 
-        <h1 class="text-lg font-semibold text-gray-900 mt-12">Statistics</h1>
+        <h1 className="text-lg font-semibold text-gray-900 mt-12">
+          Statistics
+        </h1>
 
-        <StatsCard color={'primary'} name="Social and Emotional" timeline={6} />
-        <StatsCard color={'success'} name="Language/Communication" timeline={6} />
-        <StatsCard color={'danger'} name="Cognitive Development" timeline={6} />
-        <StatsCard color={'warning'} name="Social and Emotional" timeline={6} />
-
-
+        <StatsCard color={"primary"} name="Social and Emotional" timeline={6} />
+        <StatsCard
+          color={"success"}
+          name="Language/Communication"
+          timeline={6}
+        />
+        <StatsCard color={"danger"} name="Cognitive Development" timeline={6} />
+        <StatsCard color={"warning"} name="Social and Emotional" timeline={6} />
       </div>
       <div className='w-full'>
 
@@ -97,7 +101,6 @@ export function Home(props) {
         })}
 
         </div>
-
       </div>
     </div>
 
