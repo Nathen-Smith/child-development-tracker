@@ -1,9 +1,9 @@
 // import logo from './logo.svg';
-import "./App.css";
-// import { React, useEffect, useState } from "react";
-import PropTypes from "prop-types";
-import { StatsCard } from "./StatsCard";
-import { JournalCard } from "./JournalCard";
+import './App.css';
+import { React, useEffect, useState } from "react";
+import PropTypes from 'prop-types';
+import { StatsCard } from './StatsCard';
+import { JournalCard } from './JournalCard';
 
 // import { useHistory } from "react-router-dom";
 
@@ -17,12 +17,33 @@ const axios = require("axios");
 // const image2 = require('./img/image2.png');
 // const image3 = require('./img/image3.png');
 
-export function Home(props) {
-  // const history = useHistory();
+  
 
-  // [url=https://imgbb.com/][img]https://i.ibb.co/HpXknVP/image1.png[/img][/url]
-  // [url=https://imgbb.com/][img]https://i.ibb.co/26zN4bM/image2.png[/img][/url]
-  // [url=https://imgbb.com/][img]https://i.ibb.co/NtSHHYj/image3.png[/img][/url]
+
+export function Home(props) {
+
+  const [dataValue, setDataValue] = useState([]);
+
+  useEffect(() => {
+    console.log('http://localhost:8080/api/journal?where={"email": "alz3@illinois.edu"}');
+    axios.get('http://localhost:8080/api/journal?where={"email": "alz3@illinois.edu"}')
+      .then(function (response) {
+        // setdataValue(response.data);
+        console.log(response.data['data']);
+        setDataValue(response.data['data']);
+        console.log('dataValue')
+        // console.log(dataValue)
+
+        
+        // setIdNumber(response.data.id)
+        // console.log(idNumber)
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }, []);
+
+
 
   return (
     <div className="bg-white flex overflow-hidden">
@@ -61,38 +82,29 @@ export function Home(props) {
         <StatsCard color={"danger"} name="Cognitive Development" timeline={6} />
         <StatsCard color={"warning"} name="Social and Emotional" timeline={6} />
       </div>
-      <div>
-        <div
-          className="flex-auto flex flex-row-reverse mt-4 mr-12"
-          style={{ height: "5vh" }}
-        >
-          <button
-            className="h-10 px-6 font-semibold rounded-md bg-indigo-700 text-white"
-            type="submit"
-          >
-            New Journal Entry
-          </button>
-          <button
-            className="h-10 px-6 font-semibold rounded-md border border-gray-200 text-gray-900 mr-6"
-            type="button"
-          >
-            Update Milestones
-          </button>
-        </div>
-        <div className="overflow-scroll pt-12" style={{ height: "88vh" }}>
-          <JournalCard />
-          <JournalCard />
-          <JournalCard />
-          <JournalCard />
-          <JournalCard />
-          <JournalCard />
+      <div className='w-full'>
+
+      <div class="flex-auto flex flex-row-reverse mt-4 mr-12" style={{ 'height': '5vh' }}>
+        <button class="h-10 px-6 font-semibold rounded-md bg-indigo-700 text-white" type="submit">
+          New Journal Entry
+        </button>
+        <button class="h-10 px-6 font-semibold rounded-md border border-gray-200 text-gray-900 mr-6" type="button">
+          Update Milestones
+        </button>
+      </div>
+        <div className='overflow-scroll pt-12' style={{ 'height': '88vh' }}>
+          {console.log("dataValue:" + dataValue)}
+        {
+        
+        dataValue.map((entry) => {
+          return <JournalCard text={entry.body} title={entry.title} createdAt={entry.createdAt}/>
+        })}
+
         </div>
       </div>
     </div>
 
-    // </div>
-    // </div>
-  );
+  )
 }
 
 Home.propTypes = {

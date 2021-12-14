@@ -12,16 +12,23 @@ const axios = require("axios");
 // const image1 = require("/assets/image1.png");
 
 export function JournalCard(props) {
-  return (
-    <div className="relative grid grid-cols-1 gap-4 p-4 mb-8 border rounded-lg bg-white shadow-lg mr-12 ml-12">
-      <div className="relative flex gap-4">
-        <div className="flex flex-col w-full">
-          <div className="flex flex-row justify-between">
-            <p className="relative text-xl whitespace-nowrap truncate overflow-hidden">
-              Monday November 29th
-            </p>
-            {/* <Badge style={{'height': "20px"}} className="mt-6" bg={props.color}>{props.timeline + " months"}</Badge> */}
-          </div>
+
+    return (
+        <div class="relative grid grid-cols-1 gap-4 p-4 mb-8 border rounded-lg bg-white shadow-lg mr-12 ml-12 w-12/12	">
+            <div class="relative flex gap-4">
+                <div class="flex flex-col w-full">
+                    <div class="flex flex-row justify-between">
+                        <p class="relative text-xl whitespace-nowrap truncate overflow-hidden">{props.title}</p>
+                        <p class="relative text-xl whitespace-nowrap truncate overflow-hidden">{new Date(props.createdAt).toLocaleDateString('en-us', { weekday:"short", year:"numeric", month:"short", day:"numeric"}) }</p>
+                        
+                        {/* <Badge style={{'height': "20px"}} class="mt-6" bg={props.color}>{props.timeline + " months"}</Badge> */}
+
+                    </div>
+                </div>
+            </div>
+            
+            {/* <ProgressBar now={50} label={`${50}%`} variant={props.color}  /> */}
+            <p class="-mt-4 text-gray-500"> {props.text}    </p>
         </div>
       </div>
 
