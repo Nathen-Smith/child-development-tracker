@@ -1,10 +1,9 @@
 import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
-import bodyParser = require('body-parser');
+import bodyParser from "body-parser";
 
 import baseRouter from "./routes";
-import mongoKey from "../config";
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -13,9 +12,24 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use("/api", baseRouter);
 
-mongoose
-  .connect(process.env.MONGO_CONNECTION || mongoKey)
-  .catch((err) => console.log(err));
+// Use this code snippet in your app.
+// If you need more information about configurations or implementing the sample code, visit the AWS docs:
+// https://aws.amazon.com/developers/getting-started/nodejs/
+
+// Load the AWS SDK
+var AWS = require("aws-sdk"),
+  region = "us-east-1",
+  secretName = "prod/mongoDB/apiKey";
+
+// Create a Secrets Manager client
+var client = new AWS.SecretsManager({
+  region: region,
+});
+
+client.getSecretValue({ SecretId: secretName }, function (err: any, data: any) {
+  if (!err && "SecretString" in data)
+    mongoose.connect(data.SecretString).catch((err) => console.log(err));
+});
 
 // TEST ROUTE
 app.get("/api/test", (req, res) => {
