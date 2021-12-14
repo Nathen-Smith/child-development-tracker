@@ -3,7 +3,8 @@ import StatusCodes from "http-status-codes";
 
 import User from "../models/User";
 
-const { OK, CREATED, NOT_FOUND, BAD_REQUEST, INTERNAL_SERVER_ERROR } = StatusCodes;
+const { OK, CREATED, NOT_FOUND, BAD_REQUEST, INTERNAL_SERVER_ERROR } =
+  StatusCodes;
 
 /**
  * Sends a GET request to the User collection and returns the response
@@ -12,7 +13,7 @@ const { OK, CREATED, NOT_FOUND, BAD_REQUEST, INTERNAL_SERVER_ERROR } = StatusCod
  * @returns json formatted response with status code
  */
 export async function getUser(req: Request, res: Response) {
-  let {where, sort, select, skip, limit, count} = req.query;
+  const { where, sort, select, skip, limit, count } = req.query;
   let query = {} as any;
   query.options = {};
   if (where) query.where = JSON.parse(where as string);
@@ -23,15 +24,16 @@ export async function getUser(req: Request, res: Response) {
   if (count) query.options.count = JSON.parse(count as string);
 
   try {
-    let find = await User.find(query.where, query.select, query.options);
+    const user = await User.find(query.where, query.select, query.options);
     return res.status(OK).json({
-      message: 'GET successful',
-      data: find
+      message: "GET successful",
+      data: user,
     });
   } catch (err) {
+    console.log(err);
     return res.status(INTERNAL_SERVER_ERROR).json({
-      message: 'GET failed',
-      data: []
+      message: "GET failed",
+      data: [],
     });
   }
 }
@@ -45,26 +47,26 @@ export async function getUser(req: Request, res: Response) {
 export async function createUser(req: Request, res: Response) {
   if (!req.body.name || !req.body.email) {
     return res.status(BAD_REQUEST).json({
-      message: 'POST failed: name and email required',
-      data: []
+      message: "POST failed: name and email required",
+      data: [],
     });
   }
-  
+
   const newUser = new User({
-    'name': req.body.name,
-    'email': req.body.email
+    name: req.body.name,
+    email: req.body.email,
   });
 
   try {
     let save = await newUser.save();
     return res.status(CREATED).json({
-      message: 'POST successful',
-      data: save
+      message: "POST successful",
+      data: save,
     });
   } catch (err) {
     return res.status(INTERNAL_SERVER_ERROR).json({
-      message: 'POST failed',
-      data: []
+      message: "POST failed",
+      data: [],
     });
   }
 }
@@ -79,30 +81,30 @@ export async function createUser(req: Request, res: Response) {
 export async function updateUser(req: Request, res: Response) {
   if (!req.body.email) {
     return res.status(BAD_REQUEST).json({
-      message: 'PUT failed: email required',
-      data: []
+      message: "PUT failed: email required",
+      data: [],
     });
   }
-  
+
   const updatedUser = {
-    'name': req.body.name,
-    'email': req.body.email
+    name: req.body.name,
+    email: req.body.email,
   };
 
   const filter = {
-    email: req.body.email
+    email: req.body.email,
   };
 
   try {
     let find = await User.findOneAndUpdate(filter, updatedUser);
     return res.status(OK).json({
-      message: 'PUT successful',
-      data: find
+      message: "PUT successful",
+      data: find,
     });
   } catch (err) {
     return res.status(NOT_FOUND).json({
-      message: 'PUT failed: specified user does not exist',
-      data: []
+      message: "PUT failed: specified user does not exist",
+      data: [],
     });
   }
 }
@@ -117,25 +119,25 @@ export async function updateUser(req: Request, res: Response) {
 export async function deleteUser(req: Request, res: Response) {
   if (!req.body.email) {
     return res.status(BAD_REQUEST).json({
-      message: 'DELETE failed: email required',
-      data: []
+      message: "DELETE failed: email required",
+      data: [],
     });
   }
 
   const filter = {
-    email: req.body.email
+    email: req.body.email,
   };
 
   try {
     const deleted = await User.deleteOne(filter);
     return res.status(OK).json({
-      message: 'DELETE successful',
-      data: deleted
+      message: "DELETE successful",
+      data: deleted,
     });
   } catch (err) {
     return res.status(NOT_FOUND).json({
-      message: 'DELETE failed: specified user does not exist',
-      data: []
+      message: "DELETE failed: specified user does not exist",
+      data: [],
     });
   }
 }
