@@ -36,7 +36,7 @@ export const Router = () => {
     { element: <Sleep />, path: "/sleep", auth: false },
     { element: <Food />, path: "/food", auth: false },
     { element: <JournalEntry />, path: "/journal/post", auth: true },
-    { element: <Test />, path: "/test", auth: true },
+    
   ];
 
   return (
