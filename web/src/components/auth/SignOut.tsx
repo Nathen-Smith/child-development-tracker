@@ -22,7 +22,7 @@ export const SignOut = () => {
         await buttonSignOut(auth);
         navigate("/");
       }}
-      className="text-gray-400 hover:bg-gray-300 hover:text-black px-3 py-2 rounded-md text-sm font-medium"
+      className="text-indigo-600 hover:bg-gray-300 px-1 py-2 ml-2 rounded-md text-sm font-medium"
     >
       Sign Out
     </button>

@@ -96,10 +96,11 @@ export const Food = () => {
                       }}
                       className={classNames(
                         option.active
-                          ? "bg-blue-500 hover:bg-blue-700 text-white"
-                          : "bg-transparent text-blue-700  border border-blue-500",
-                        " font-semibold py-2 px-2 rounded"
+                          ? "bg-indigo-600 hover:bg-indigo-500 text-white"
+                          : " hover:bg-indigo-600 text-indigo-600 hover:text-white border border-indigo-600",
+                        " font-semibold py-2 px-4 rounded"
                       )}
+                      aria-current={option.active ? "page" : undefined}
                     >
                       <span className="mx-2">{option.name}</span>
                     </button>
@@ -144,7 +145,7 @@ export const Food = () => {
               postEntry(activeSelections, time, comments);
             }}
             className={
-              "w-20 bg-blue-500 text-white  border border-blue-500 font-semibold py-2 px-2 rounded"
+              "w-20 bg-indigo-600 text-white  border border-indigo-600 font-semibold py-2 px-2 rounded"
             }
           >
             <span className="mx-2">Post</span>

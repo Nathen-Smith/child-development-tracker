@@ -35,7 +35,7 @@ export const SignIn = () => {
       onClick={async () => {
         await buttonSignIn(auth);
       }}
-      className="text-gray-400 hover:bg-gray-300 hover:text-black px-3 py-2 rounded-md text-sm font-medium"
+      className="text-indigo-600 hover:bg-indigo-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
     >
       Sign In
     </button>

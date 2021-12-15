@@ -44,14 +44,9 @@ export async function getChanges(req: Request, res: Response) {
  * @returns json formatted response with status code
  */
 export async function createChanges(req: Request, res: Response) {
-  if (
-    !req.body.consistency ||
-    !req.body.time ||
-    !req.body.notes ||
-    !req.body.email
-  ) {
+  if (!req.body.consistency || !req.body.time || !req.body.email) {
     return res.status(BAD_REQUEST).json({
-      message: "POST failed: [consistency, time, notes, email] all required",
+      message: "POST failed: [consistency, time, email] all required",
       data: [],
     });
   }
@@ -59,9 +54,9 @@ export async function createChanges(req: Request, res: Response) {
   const newChange = new Changes({
     consistency: req.body.consistency,
     time: req.body.time,
-    notes: req.body.notes,
     email: req.body.email,
   });
+  if (req.body.notes) newChange.notes = req.body.notes;
 
   try {
     let save = await newChange.save();
@@ -72,7 +67,7 @@ export async function createChanges(req: Request, res: Response) {
   } catch (err) {
     return res.status(INTERNAL_SERVER_ERROR).json({
       message: "POST failed",
-      data: [],
+      data: err,
     });
   }
 }
