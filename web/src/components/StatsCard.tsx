@@ -1,7 +1,11 @@
+import axios from "axios";
 import React from "react";
 
 import Badge from "react-bootstrap/Badge";
 import ProgressBar from "react-bootstrap/ProgressBar";
+import { useUser } from "reactfire";
+import { useState } from "react";
+import { MilestonesData } from './MilestonesData';
 
 interface StatsCardProps {
   name: string;
@@ -39,6 +43,22 @@ export const StatsCard: React.FC<StatsCardProps> = ({
   //       console.log(error);
   //     });
   // }, [props.name]);
+
+  const {data: user} = useUser();
+  const [progress, setProgress] = useState<number>(0);
+
+  async function getProgress() {
+    if (!user) return;
+    const total = MilestonesData.filter(m => m.timeline === timeline && m.category === name).length;
+    try {
+      const response = await axios.get(`/milestones?where={"email": ${user.email}, "timeline": ${timeline}, "category": ${name}}&count=true`);
+      if (response.status !== 200) throw "GET failed";
+      // 
+      setProgress(100 * (response.data.data) / total);
+    } catch (e) {
+      console.log(e);
+    }
+  }
 
   return (
     <div className="relative grid grid-cols-1 gap-4 p-4 mb-8 border rounded-lg bg-white shadow-lg">

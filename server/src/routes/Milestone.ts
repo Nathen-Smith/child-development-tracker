@@ -53,7 +53,8 @@ export async function createMilestone(req: Request, res: Response) {
   const newMilestone = new Milestone({
     'title': req.body.title,
     'timeline': req.body.timeline,
-    'email': req.body.email
+    'email': req.body.email,
+    'category': req.body.category,
   });
 
   try {
