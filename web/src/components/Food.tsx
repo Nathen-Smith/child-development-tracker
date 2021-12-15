@@ -7,6 +7,9 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
+import {useUser} from "reactfire";
+import axios from "axios";
+import { couldStartTrivia } from "typescript";
 
 interface FoodProps {
   color: string;
@@ -14,6 +17,32 @@ interface FoodProps {
 }
 
 export const Food: React.FC<FoodProps> = ({ color, timeline }) => {
+  
+  const {data: user} = useUser();
+  async function postEntry(foods: [string], timeInput: string, notes: string) {
+    if (!user) return;
+    // creating Date from string
+    const split = timeInput.split(":");
+    if (split.length < 2) throw "Time can't be parsed";
+    const hours = parseInt(split[0]);
+    const minutes = parseInt(split[1]);
+    if (isNaN(hours) || isNaN(minutes)) throw "Time can't be parsed";
+    const time = new Date(0, 0, 0, hours, minutes);
+
+    const entry = {
+      typesOfFood: foods,
+      time: time,
+      notes: notes,
+      email: user.email
+    };
+
+    try {
+      await axios.post('/food', entry);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
   return (
     <div className="bg-white flex overflow-hidden">
       <div className="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
