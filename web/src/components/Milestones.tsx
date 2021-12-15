@@ -28,7 +28,7 @@ export const Milestones = () => {
       </div>
       <ScrollingCarousel>
         <div className="lg:w-1/4 sm:w-full mr-12 ml-12">
-        <StatsCard color={"primary"} category="Social and Emotional" name="Social and Emotional" timeline={6}  />
+        <StatsCard color={"primary"} category="Social and Emotional" name="Social and Emotional" timeline={timeline}  />
         </div>
         <div className="lg:w-1/4 sm:w-full mr-12 ml-12">
         <StatsCard
@@ -39,10 +39,10 @@ export const Milestones = () => {
         />
         </div>
         <div className="lg:w-1/4 sm:w-full mr-12 ml-12">
-        <StatsCard color={"danger"} category="Cognitive" name="Cognitive Development" timeline={6} />
+        <StatsCard color={"danger"} category="Cognitive" name="Cognitive Development" timeline={timeline} />
         </div>
         <div className="lg:w-1/4 sm:w-full mr-12 ml-12">
-        <StatsCard color={"warning"} category="Physical" name="Physical" timeline={6} />
+        <StatsCard color={"warning"} category="Physical" name="Physical" timeline={timeline} />
         </div>
       </ScrollingCarousel>
 
