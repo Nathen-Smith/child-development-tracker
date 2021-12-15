@@ -7,10 +7,13 @@ import { HomeNoAuth } from "./HomeNoAuth";
 import { Link } from "react-router-dom";
 
 import { JournalArrProps } from "./journal";
+import { time } from "console";
+import { TimelineMenu } from "./TimelineMenu";
 
 export const Home = () => {
   const { data: user } = useUser();
   const [journals, setJournals] = useState<JournalArrProps>();
+  const [timeline, setTimeline] = useState<number>(2);
 
   useEffect(() => {
     async function getUserData() {
@@ -60,15 +63,15 @@ export const Home = () => {
         <h1 className="text-lg font-semibold text-gray-900 mt-12">
           Statistics
         </h1>
-
-        <StatsCard color={"primary"} name="Social and Emotional" timeline={6} />
+        <TimelineMenu updateFunc={setTimeline}/>
+        <StatsCard color={"primary"} name="Social and Emotional" timeline={timeline} />
         <StatsCard
           color={"success"}
           name="Language/Communication"
-          timeline={6}
+          timeline={timeline}
         />
-        <StatsCard color={"danger"} name="Cognitive Development" timeline={6} />
-        <StatsCard color={"warning"} name="Social and Emotional" timeline={6} />
+        <StatsCard color={"danger"} name="Cognitive Development" timeline={timeline} />
+        <StatsCard color={"warning"} name="Social and Emotional" timeline={timeline} />
       </div>
       <div className="w-full">
         <div
