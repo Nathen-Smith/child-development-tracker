@@ -1,5 +1,5 @@
 import React from "react";
-import { JournalCard } from "./JournalCard";
+import { JournalCard } from "./journal/JournalCard";
 
 import Badge from "react-bootstrap/Badge";
 import Form from "react-bootstrap/Form";
@@ -95,12 +95,17 @@ export const Sleep: React.FC<SleepProps> = ({ color, timeline }) => {
       </div>
       <div>
         <div className="overflow-scroll pt-12" style={{ height: "94vh" }}>
+          <JournalCard
+            body="text"
+            title="title"
+            createdAt="createdAt"
+            key={1}
+          />
+          {/* <JournalCard text="text" title="title" createdAt="createdAt" />
           <JournalCard text="text" title="title" createdAt="createdAt" />
           <JournalCard text="text" title="title" createdAt="createdAt" />
           <JournalCard text="text" title="title" createdAt="createdAt" />
-          <JournalCard text="text" title="title" createdAt="createdAt" />
-          <JournalCard text="text" title="title" createdAt="createdAt" />
-          <JournalCard text="text" title="title" createdAt="createdAt" />
+          <JournalCard text="text" title="title" createdAt="createdAt" /> */}
         </div>
       </div>
     </div>

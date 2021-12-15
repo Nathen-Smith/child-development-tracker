@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 // import { StatsCard } from "./StatsCard";
-import { JournalCard } from "./JournalCard";
+import { JournalCard } from "./journal/JournalCard";
 
 // import ProgressBar from "react-bootstrap/ProgressBar";
 import Badge from "react-bootstrap/Badge";
@@ -26,10 +26,6 @@ import axios from "../axios";
 
 export function Changes(props) {
   // const history = useHistory();
-
-  // [url=https://imgbb.com/][img]https://i.ibb.co/HpXknVP/image1.png[/img][/url]
-  // [url=https://imgbb.com/][img]https://i.ibb.co/26zN4bM/image2.png[/img][/url]
-  // [url=https://imgbb.com/][img]https://i.ibb.co/NtSHHYj/image3.png[/img][/url]
 
   const [value, setValue] = useState("wet"),
     onInput = ({ target: { value } }) => {
@@ -185,12 +181,12 @@ export function Changes(props) {
       </div>
       <div>
         <div className="overflow-scroll pt-12" style={{ height: "94vh" }}>
+          {/* <JournalCard />
           <JournalCard />
           <JournalCard />
           <JournalCard />
           <JournalCard />
-          <JournalCard />
-          <JournalCard />
+          <JournalCard /> */}
         </div>
       </div>
     </div>
