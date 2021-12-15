@@ -73,91 +73,80 @@ export const Food = () => {
   }
 
   return (
-    <div className="flex flex-row max-w-lg">
-      <div className="bg-white flex">
-        <div className="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
-          <div className="relative grid grid-cols-1 gap-4 p-4 mb-8 border rounded-lg bg-white shadow-lg">
-            <div className="relative flex gap-4">
-              <div className="flex flex-col w-full">
-                <p
-                  className="relative text-lg whitespace-nowrap truncate overflow-hidden mr-12 mb-2"
-                  style={{ width: "240px" }}
-                >
-                  Type Of Food
-                </p>
-                {errMessage && <div className="text-red-500">{errMessage}</div>}
+    <div className="flex flex-col max-w-7xl mx-auto">
+      <div className="w-1/2">
+        <p
+          className="relative text-lg whitespace-nowrap truncate overflow-hidden mr-12 mb-2"
+          style={{ width: "240px" }}
+        >
+          Type Of Food
+        </p>
+        {errMessage && <div className="text-red-500">{errMessage}</div>}
 
-                <div className="flex flex-row justify-between">
-                  <div>
-                    {options.map((option, idx) => {
-                      return (
-                        <label
-                          className="flex inline-flex items-center pr-2"
-                          key={idx}
-                        >
-                          <button
-                            onClick={() => {
-                              updateFieldChanged(idx);
-                            }}
-                            className={classNames(
-                              option.active
-                                ? "bg-blue-500 hover:bg-blue-700 text-white"
-                                : "bg-transparent text-blue-700  border border-blue-500",
-                              " font-semibold py-2 px-2 rounded"
-                            )}
-                          >
-                            <span className="mx-2">{option.name}</span>
-                          </button>
-                        </label>
-                      );
-                    })}
-                  </div>
-                </div>
-                <p
-                  className="relative text-lg whitespace-nowrap truncate overflow-hidden mr-12 mb-2 mt-6"
-                  style={{ width: "240px" }}
-                >
-                  Time of Feeding
-                </p>
-
-                <input
-                  className="border w-1/3 block h-10 rounded"
-                  type="text"
-                  value={time}
-                  onChange={(e) => setTime(e.target.value)}
-                  placeholder="HH:MM"
-                />
-                <p
-                  className="relative text-lg whitespace-nowrap truncate overflow-hidden mr-12 mb-2 mt-6"
-                  style={{ width: "240px" }}
-                >
-                  {"Notes & Comments"}
-                </p>
-                <textarea
-                  className="border w-full h-1/4 block"
-                  rows={5}
-                  value={comments}
-                  onChange={(e) => setComments(e.target.value)}
-                />
-                <button
-                  onClick={async (e) => {
-                    e.preventDefault();
-                    if (activeSelections.length === 0 || !time || !comments) {
-                      setErrMessage("Must fill out all fields");
-                      return;
-                    }
-                    postEntry(activeSelections, time, comments);
-                  }}
-                  className={
-                    "w-20 bg-blue-500 text-white  border border-blue-500 font-semibold py-2 px-2 rounded"
-                  }
-                >
-                  <span className="mx-2">Post</span>
-                </button>
-              </div>
-            </div>
+        <div className="flex flex-row justify-between">
+          <div>
+            {options.map((option, idx) => {
+              return (
+                <label className="flex inline-flex items-center pr-2" key={idx}>
+                  <button
+                    onClick={() => {
+                      updateFieldChanged(idx);
+                    }}
+                    className={classNames(
+                      option.active
+                        ? "bg-blue-500 hover:bg-blue-700 text-white"
+                        : "bg-transparent text-blue-700  border border-blue-500",
+                      " font-semibold py-2 px-2 rounded"
+                    )}
+                  >
+                    <span className="mx-2">{option.name}</span>
+                  </button>
+                </label>
+              );
+            })}
           </div>
         </div>
+        <p
+          className="relative text-lg whitespace-nowrap truncate overflow-hidden mr-12 mb-2 mt-6"
+          style={{ width: "240px" }}
+        >
+          Time of Feeding
+        </p>
+
+        <input
+          className="border w-1/3 block h-10 rounded"
+          type="text"
+          value={time}
+          onChange={(e) => setTime(e.target.value)}
+          placeholder="HH:MM"
+        />
+        <p
+          className="relative text-lg whitespace-nowrap truncate overflow-hidden mr-12 mb-2 mt-6"
+          style={{ width: "240px" }}
+        >
+          {"Notes & Comments"}
+        </p>
+        <textarea
+          className="border w-full h-1/4 block"
+          rows={5}
+          value={comments}
+          onChange={(e) => setComments(e.target.value)}
+        />
+        <button
+          onClick={async (e) => {
+            e.preventDefault();
+            if (activeSelections.length === 0 || !time || !comments) {
+              setErrMessage("Must fill out all fields");
+              return;
+            }
+            postEntry(activeSelections, time, comments);
+          }}
+          className={
+            "w-20 bg-blue-500 text-white  border border-blue-500 font-semibold py-2 px-2 rounded"
+          }
+        >
+          <span className="mx-2">Post</span>
+        </button>
       </div>
     </div>
   );
