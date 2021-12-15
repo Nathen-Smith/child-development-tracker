@@ -7,7 +7,9 @@ export const Milestones = () => {
   // trying to get all unique timeline values
   // https://stackoverflow.com/questions/11246758/how-to-get-unique-values-in-an-array
   // add these into a dropdown menu or something?
-  const timelineValues = Array.from(new Set(MilestonesData.map(m => m.timeline)));
+  const timelineValues = Array.from(
+    new Set(MilestonesData.map((m) => m.timeline))
+  );
   // this value is set by the dropdown/input element
   const [timeline, setTimeline] = useState<number>(2);
   // replace 'e.timeline === 6' with 'e.timeline === timeline'
