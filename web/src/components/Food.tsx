@@ -87,7 +87,7 @@ export const Food = () => {
               {options.map((option, idx) => {
                 return (
                   <label
-                    className="flex inline-flex items-center pr-2"
+                    className="flex inline-flex items-center pr-1 mb-1"
                     key={idx}
                   >
                     <button
