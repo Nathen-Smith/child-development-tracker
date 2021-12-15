@@ -40,7 +40,7 @@ export const FoodEntries = () => {
       {foodEntries?.map(({ typesOfFood, createdAt, time }, idx) => {
         return (
           <JournalCard
-            body={}
+            body="hi"
             title={typesOfFood.join()}
             createdAt={createdAt}
             key={idx}
