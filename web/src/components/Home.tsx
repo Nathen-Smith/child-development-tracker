@@ -63,7 +63,7 @@ export const Home = () => {
         <h1 className="text-lg font-semibold text-gray-900 mt-12">
           Statistics
         </h1>
-
+        <TimelineMenu updateFunc={setTimeline} />
         <StatsCard color={"primary"} category="Social and Emotional" name="Social and Emotional" timeline={timeline} />
         <StatsCard
           color={"success"}
