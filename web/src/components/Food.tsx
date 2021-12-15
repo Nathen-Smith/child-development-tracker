@@ -16,13 +16,13 @@ interface FoodProps {
 export const Food: React.FC<FoodProps> = ({ color, timeline }) => {
   return (
     <div className="bg-white flex overflow-hidden">
-      <div className="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
-        <div className="relative grid grid-cols-1 gap-4 p-4 mb-8 border rounded-lg bg-white shadow-lg">
+      <div className="flex-1 flex flex-col justify-center py-12 px-4 resize-x min-w-max sm:px-6 lg:flex-none lg:px-20 xl:px-24">
+        <div className="relative grid grid-cols-1 gap-4 p-4 mb-8 border rounded-lg bg-white shadow-lg flex flex-wrap">
           <div className="relative flex gap-4">
             <div className="flex flex-col w-full">
               <div className="flex flex-row justify-between">
                 <p
-                  className="relative text-xl whitespace-nowrap truncate overflow-hidden mr-12"
+                  className="relative text-xl whitespace-nowrap truncate overflow-hidden mr-12 flex flex-wrap"
                   style={{ width: "240px" }}
                 >
                   Food
@@ -40,7 +40,7 @@ export const Food: React.FC<FoodProps> = ({ color, timeline }) => {
 
           <Form>
             <p
-              className="relative text-lg whitespace-nowrap truncate overflow-hidden mr-12 mb-2"
+              className="relative text-lg whitespace-nowrap truncate overflow-hidden mr-12 mb-2 flex flex-wrap"
               style={{ width: "240px" }}
             >
               Type Of Food
@@ -103,9 +103,12 @@ export const Food: React.FC<FoodProps> = ({ color, timeline }) => {
         </div>
       </div>
       <div>
-        <div className="overflow-scroll pt-12" style={{ height: "94vh" }}>
+      <div className="flex flex-wrap min-w-0">
+        <div className="overflow-scroll pt-12 " style={{ height: "94vh" }}>
+          {/* overflow-scroll pt-12  */}
+          
           <JournalCard
-            body="text"
+            body="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
             title="title"
             createdAt="createdAt"
             key={1}
@@ -116,6 +119,7 @@ export const Food: React.FC<FoodProps> = ({ color, timeline }) => {
           <JournalCard text="text" title="title" createdAt="createdAt" />
           <JournalCard text="text" title="title" createdAt="createdAt" /> */}
         </div>
+      </div>
       </div>
     </div>
   );
