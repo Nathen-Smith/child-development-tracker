@@ -8,7 +8,7 @@ interface ChangesArrProps extends Array<ChangesProps> {}
 interface ChangesProps {
   consistency: string;
   time: string;
-  notes: string;
+  notes?: string;
   email: string;
   createdAt: string;
 }
