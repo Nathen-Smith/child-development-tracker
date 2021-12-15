@@ -52,7 +52,7 @@ export const MilestoneCard: React.FC<MilestonesCardProps> = ({
   }
 
   return (
-    <div className="relative grid grid-cols-1 gap-4 p-4 mb-8 border rounded-lg bg-white shadow-lg mr-12 ml-12">
+    <div className="relative grid grid-cols-1 gap-4 p-4 mb-8 border rounded-lg bg-white shadow-lg mr-12 ml-12" style={{'width': '300px'}}>
       <div className="relative flex gap-4">
         <div className="flex flex-col w-full">
           <div className="flex flex-row justify-between">
@@ -61,13 +61,15 @@ export const MilestoneCard: React.FC<MilestonesCardProps> = ({
               style={{
                 display: "block",
                 overflow: "auto",
-                width: "80%",
+                // width: "80%",
                 height: "10vh",
               }}
             >
               {milestoneName}
             </p>
-            {hasBeenCompleted ? (
+            
+          </div>
+          {hasBeenCompleted ? (
               <button
                 className="h-10 px-6 font-semibold rounded-md bg-indigo-700 text-white"
                 type="submit"
@@ -83,7 +85,6 @@ export const MilestoneCard: React.FC<MilestonesCardProps> = ({
                 Complete
               </button>
             )}
-          </div>
         </div>
       </div>
     </div>

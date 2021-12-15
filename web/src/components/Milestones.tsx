@@ -2,6 +2,9 @@ import { StatsCard } from "./StatsCard";
 import { MilestoneCard } from "./MilestoneCard";
 import { MilestonesData } from "./MilestonesData";
 import { useState } from "react";
+import { ScrollingCarousel } from "./Carousels/index"
+// import { ScrollingCarousel } from "./scrolling-carousel/index";
+// import { Carousel } from './OMSCarousels/components/carousel/index';
 
 export const Milestones = () => {
   // trying to get all unique timeline values
@@ -15,37 +18,39 @@ export const Milestones = () => {
   // replace 'e.timeline === 6' with 'e.timeline === timeline'
   // do the same thing on the home page
   return (
-    <div>
+    <div className="overflow-scroll">
       <h1 className="text-lg font-semibold text-gray-900 mt-12 ml-12">
         Statistics
       </h1>
-      <div
-        className="flex flex-row  p-12"
-        style={{ justifyContent: "space-between", width: "100%" }}
-      >
-        <StatsCard color={"primary"} name="Social and Emotional" timeline={6} />
+      
+      <ScrollingCarousel>
+        <div className="lg:w-1/4 sm:w-full mr-12 ml-12">
+        <StatsCard color={"primary"} name="Social and Emotional" timeline={6}  />
+        </div>
+        <div className="lg:w-1/4 sm:w-full mr-12 ml-12">
         <StatsCard
           color={"success"}
           name="Language/Communication"
           timeline={6}
         />
+        </div>
+        <div className="lg:w-1/4 sm:w-full mr-12 ml-12">
         <StatsCard color={"danger"} name="Cognitive Development" timeline={6} />
-        <StatsCard color={"warning"} name="Social and Emotional" timeline={6} />
-      </div>
+        </div>
+        <div className="lg:w-1/4 sm:w-full mr-12 ml-12">
+        <StatsCard color={"warning"} name="Phyisical" timeline={6} />
+        </div>
+      </ScrollingCarousel>
 
       <h1 className="text-lg font-semibold text-gray-900 ml-12">
         Milestone Completion
       </h1>
-      <div className="bg-white flex overflow-hidden" style={{ height: "59vh" }}>
-        <div>
-          <div
-            className="flex-auto flex flex-row mt-4 mr-12"
-            style={{ height: "5vh" }}
-          >
-            <div className="overflow-scroll " style={{ height: "56vh" }}>
-              <h1 className="text-lg font-regular text-gray-900 ml-12 ">
+      {/* <div className="bg-white flex"> */}
+      <h1 className="text-lg font-regular text-gray-900 ml-12 ">
                 Social and Emotional
               </h1>
+            <ScrollingCarousel>
+
 
               {MilestonesData.filter(
                 (e) => e.timeline === 6 && e.category === "Social and Emotional"
@@ -59,11 +64,15 @@ export const Milestones = () => {
                   />
                 );
               })}
-            </div>
-            <div className="overflow-scroll " style={{ height: "56vh" }}>
-              <h1 className="text-lg font-regular text-gray-900 ml-12 ">
+              </ScrollingCarousel>
+            {/* </div> */}
+            {/* <div className="overflow-scroll w-1/4" style={{ height: "56vh" }}>
+             */}
+                           <h1 className="text-lg font-regular text-gray-900 ml-12 ">
                 Language/Communication
               </h1>
+             <ScrollingCarousel>
+
               {MilestonesData.filter(
                 (e) =>
                   e.timeline === 6 && e.category === "Language/Communication"
@@ -77,11 +86,15 @@ export const Milestones = () => {
                   />
                 );
               })}
-            </div>
-            <div className="overflow-scroll " style={{ height: "56vh" }}>
-              <h1 className="text-lg font-regular text-gray-900 ml-12 ">
+            {/* </div> */}
+            </ScrollingCarousel>
+            {/* <div className="overflow-scroll w-1/4" style={{ height: "56vh" }}>
+             */}
+                           <h1 className="text-lg font-regular text-gray-900 ml-12 ">
                 Cognitive Development
               </h1>
+             <ScrollingCarousel>
+
               {MilestonesData.filter(
                 (e) => e.timeline === 6 && e.category === "Cognitive"
               ).map((entry, idx) => {
@@ -94,11 +107,14 @@ export const Milestones = () => {
                   />
                 );
               })}
-            </div>
-            <div className="overflow-scroll " style={{ height: "56vh" }}>
-              <h1 className="text-lg font-regular text-gray-900 ml-12 ">
+            {/* </div> */}
+            </ScrollingCarousel>
+            {/* <div className="overflow-scroll w-1/4 " style={{ height: "56vh" }}> */}
+            <h1 className="text-lg font-regular text-gray-900 ml-12 ">
                 Physical Development
               </h1>
+            <ScrollingCarousel>
+
               {MilestonesData.filter(
                 (e) => e.timeline === 6 && e.category === "Physical"
               ).map((entry, idx) => {
@@ -111,10 +127,11 @@ export const Milestones = () => {
                   />
                 );
               })}
-            </div>
+            {/* </div> */}
+            </ScrollingCarousel>
           </div>
-        </div>
-      </div>
-    </div>
+        // </div>
+      // </div>
+    // </div>
   );
 };

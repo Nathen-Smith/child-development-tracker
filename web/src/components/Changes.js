@@ -11,6 +11,7 @@ import Row from "react-bootstrap/Row";
 // import Col from "react-bootstrap/Col";
 // import Button from "react-bootstrap/Button";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
+import {ChangesEntries} from "./ChangesEntries";
 
 // import { useHistory } from "react-router-dom";
 
@@ -60,10 +61,12 @@ export function Changes(props) {
       setValue();
     };
 
-  function saveChanges() {
+  function saveChanges(e) {
     console.log(value);
     console.log(hour);
     console.log(comments);
+
+    e.preventDefault()
 
     axios
       .post("http://localhost:8080/api/changes", {
@@ -187,6 +190,7 @@ export function Changes(props) {
           <JournalCard />
           <JournalCard />
           <JournalCard /> */}
+          <ChangesEntries update={false} />
         </div>
       </div>
     </div>
