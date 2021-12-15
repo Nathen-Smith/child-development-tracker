@@ -28,8 +28,6 @@ export default function App() {
     { to: "/sleep", auth: true, name: "Sleep" },
     { to: "/food", auth: true, name: "Food" },
     { to: "/journal/post", auth: true, name: "Journal" },
-    { to: "/test", auth: true, name: "Test" },
-    { to: "/foodnew", auth: true, name: "FoodNew" },
   ];
 
   const filteredNavLinks = (
