@@ -25,7 +25,6 @@ export default function App() {
     { to: "/", auth: false, name: "Home" },
     { to: "/milestones", auth: true, name: "Milestones" },
     { to: "/changes", auth: true, name: "Changes" },
-    // { to: "/sleep", auth: true, name: "Sleep" },
     { to: "/food", auth: true, name: "Food" },
     { to: "/journal/post", auth: true, name: "Journal" },
   ];

@@ -64,15 +64,30 @@ export const Home = () => {
           Statistics
         </h1>
         <TimelineMenu updateFunc={setTimeline} />
-        <StatsCard color={"primary"} category="Social and Emotional" name="Social and Emotional" timeline={timeline} />
+        <StatsCard
+          color={"primary"}
+          category="Social and Emotional"
+          name="Social and Emotional"
+          timeline={timeline}
+        />
         <StatsCard
           color={"success"}
           category="Language/Communication"
           name="Language/Communication"
           timeline={timeline}
         />
-        <StatsCard color={"danger"} category="Cognitive" name="Cognitive Development" timeline={timeline} />
-        <StatsCard color={"warning"} category="Physical" name="Physical" timeline={timeline} />
+        <StatsCard
+          color={"danger"}
+          category="Cognitive"
+          name="Cognitive Development"
+          timeline={timeline}
+        />
+        <StatsCard
+          color={"warning"}
+          category="Physical"
+          name="Physical"
+          timeline={timeline}
+        />
       </div>
       <div className="w-full">
         <div

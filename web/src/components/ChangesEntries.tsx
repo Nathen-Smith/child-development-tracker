@@ -3,12 +3,11 @@ import axios from "../axios";
 import { useUser } from "reactfire";
 import { JournalCard } from "./journal/JournalCard";
 
-export interface ChangesArrProps extends Array<ChangesProps> {}
+interface ChangesArrProps extends Array<ChangesProps> {}
 
-export interface ChangesProps {
-  typesOfChanges: string[];
-  hour: number;
-  minutes: number;
+interface ChangesProps {
+  consistency: string;
+  time: string;
   notes?: string;
   email: string;
   createdAt: string;
@@ -18,13 +17,9 @@ interface ChangesEntriesShouldUpdate {
   update: boolean;
 }
 
-export function convertTime(hour: number, minutes: number) {
-  return `${hour < 10 ? "0" + hour.toString() : hour}:${
-    minutes < 10 ? "0" + minutes.toString() : minutes
-  }`;
-}
-
-export const ChangesEntries: React.FC<ChangesEntriesShouldUpdate> = ({ update }) => {
+export const ChangesEntries: React.FC<ChangesEntriesShouldUpdate> = ({
+  update,
+}) => {
   const { data: user } = useUser();
   const [ChangesEntries, setChangesEntries] = useState<ChangesArrProps>();
 
@@ -47,20 +42,16 @@ export const ChangesEntries: React.FC<ChangesEntriesShouldUpdate> = ({ update })
 
   return (
     <div className="overflow-scroll pt-12" style={{ height: "88vh" }}>
-      {ChangesEntries?.map(
-        ({ typesOfChanges, createdAt, hour, minutes, notes }, idx) => {
-          return (
-            <JournalCard
-              body={`${convertTime(hour, minutes)} ${
-                notes ? `Notes: ${notes}` : ""
-              }`}
-              title={typesOfChanges.join(", ")}
-              createdAt={createdAt}
-              key={idx}
-            />
-          );
-        }
-      )}
+      {ChangesEntries?.map(({ consistency, notes, time }, idx) => {
+        return (
+          <JournalCard
+            body={`${notes ? `Notes: ${notes}` : ""}`}
+            title={consistency}
+            createdAt={time}
+            key={idx}
+          />
+        );
+      })}
     </div>
   );
 };
