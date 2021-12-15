@@ -27,11 +27,11 @@ export const Food: React.FC<FoodProps> = ({ color, timeline }) => {
     const hours = parseInt(split[0]);
     const minutes = parseInt(split[1]);
     if (isNaN(hours) || isNaN(minutes)) throw "Time can't be parsed";
-    const time = new Date(0, 0, 0, hours, minutes);
 
     const entry = {
       typesOfFood: foods,
-      time: time,
+      hour: hours,
+      minutes: minutes,
       notes: notes,
       email: user.email
     };
