@@ -1,29 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { StatsCard } from "./StatsCard";
-import { JournalCard } from "./JournalCard";
+import { JournalCard } from "./journal/JournalCard";
 import axios from "../axios";
 import { useUser } from "reactfire";
 import { HomeNoAuth } from "./HomeNoAuth";
 
-interface JournalArr extends Array<Journal> {}
-
-interface Journal {
-  title: string;
-  body: string;
-  email: string;
-  createdAt: string;
-}
+import { JournalArrProps } from "./journal";
 
 export const Home = () => {
   const { data: user } = useUser();
-  const [journals, setJournals] = useState<JournalArr>();
+  const [journals, setJournals] = useState<JournalArrProps>();
 
   useEffect(() => {
     async function getUserData() {
       try {
         const userParams = { where: `{"email": "${user?.email}"}` };
         const journalRes = await axios.get("/journal", { params: userParams });
-        setJournals(journalRes.data);
+        setJournals(journalRes.data.data);
       } catch (err) {
         console.log(err);
       }
@@ -91,7 +84,12 @@ export const Home = () => {
         <div className="overflow-scroll pt-12" style={{ height: "88vh" }}>
           {journals?.map(({ title, createdAt, body }, idx) => {
             return (
-              <JournalCard text={body} title={title} createdAt={createdAt} />
+              <JournalCard
+                body={body}
+                title={title}
+                createdAt={createdAt}
+                key={idx}
+              />
             );
           })}
         </div>

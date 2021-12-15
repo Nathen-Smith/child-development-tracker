@@ -2,7 +2,7 @@ import React from "react";
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { useUser } from "reactfire";
 
-import { JournalEntry } from "./components/JournalEntry";
+import { JournalEntry } from "./components/journal/JournalEntry";
 import { Home } from "./components/Home";
 
 import { Milestones } from "./components/Milestones";
