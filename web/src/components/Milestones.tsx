@@ -3,6 +3,7 @@ import { MilestoneCard } from "./MilestoneCard";
 import { MilestonesData } from "./MilestonesData";
 import { useState } from "react";
 import { ScrollingCarousel } from "./Carousels/index"
+import { TimelineMenu } from "./TimelineMenu";
 // import { ScrollingCarousel } from "./scrolling-carousel/index";
 // import { Carousel } from './OMSCarousels/components/carousel/index';
 
@@ -22,23 +23,25 @@ export const Milestones = () => {
       <h1 className="text-lg font-semibold text-gray-900 mt-12 ml-12">
         Statistics
       </h1>
-      
+      <div className="ml-12">
+        <TimelineMenu updateFunc={setTimeline}/>
+      </div>
       <ScrollingCarousel>
         <div className="lg:w-1/4 sm:w-full mr-12 ml-12">
-        <StatsCard color={"primary"} name="Social and Emotional" timeline={6}  />
+        <StatsCard color={"primary"} name="Social and Emotional" timeline={timeline}  />
         </div>
         <div className="lg:w-1/4 sm:w-full mr-12 ml-12">
         <StatsCard
           color={"success"}
           name="Language/Communication"
-          timeline={6}
+          timeline={timeline}
         />
         </div>
         <div className="lg:w-1/4 sm:w-full mr-12 ml-12">
-        <StatsCard color={"danger"} name="Cognitive Development" timeline={6} />
+        <StatsCard color={"danger"} name="Cognitive Development" timeline={timeline} />
         </div>
         <div className="lg:w-1/4 sm:w-full mr-12 ml-12">
-        <StatsCard color={"warning"} name="Phyisical" timeline={6} />
+        <StatsCard color={"warning"} name="Phyisical" timeline={timeline} />
         </div>
       </ScrollingCarousel>
 
@@ -53,7 +56,7 @@ export const Milestones = () => {
 
 
               {MilestonesData.filter(
-                (e) => e.timeline === 6 && e.category === "Social and Emotional"
+                (e) => e.timeline === timeline && e.category === "Social and Emotional"
               ).map((entry, idx) => {
                 return (
                   <MilestoneCard
@@ -75,7 +78,7 @@ export const Milestones = () => {
 
               {MilestonesData.filter(
                 (e) =>
-                  e.timeline === 6 && e.category === "Language/Communication"
+                  e.timeline === timeline && e.category === "Language/Communication"
               ).map((entry, idx) => {
                 return (
                   <MilestoneCard
@@ -96,7 +99,7 @@ export const Milestones = () => {
              <ScrollingCarousel>
 
               {MilestonesData.filter(
-                (e) => e.timeline === 6 && e.category === "Cognitive"
+                (e) => e.timeline === timeline && e.category === "Cognitive"
               ).map((entry, idx) => {
                 return (
                   <MilestoneCard
@@ -116,7 +119,7 @@ export const Milestones = () => {
             <ScrollingCarousel>
 
               {MilestonesData.filter(
-                (e) => e.timeline === 6 && e.category === "Physical"
+                (e) => e.timeline === timeline && e.category === "Physical"
               ).map((entry, idx) => {
                 return (
                   <MilestoneCard
