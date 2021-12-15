@@ -43,16 +43,17 @@ export async function getFood(req: Request, res: Response) {
  * @returns json formatted response with status code
  */
 export async function createFood(req: Request, res: Response) {
-  if (!req.body.typesOfFood || !req.body.time || !req.body.notes || !req.body.email) {
+  if (!req.body.typesOfFood || !req.body.hour || !req.body.minutes || !req.body.notes || !req.body.email) {
     return res.status(BAD_REQUEST).json({
-      message: 'POST failed: [typesOfFood, time, notes, email] all required',
+      message: 'POST failed: [typesOfFood, hour, minutes, notes, email] all required',
       data: []
     });
   }
   
   const newFood = new Food({
     'typesOfFood': req.body.typesOfFood,
-    'time': req.body.time,
+    'hour': req.body.hour,
+    'minutes': req.body.minutes,
     'notes': req.body.notes,
     'email': req.body.email
   });
