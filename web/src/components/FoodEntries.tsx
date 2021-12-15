@@ -18,8 +18,17 @@ interface FoodEntriesShouldUpdate {
   update: boolean;
 }
 
+function getFormattedTime(fourDigitTime: string) {
+  var hours24 = parseInt(fourDigitTime.substring(0, 2));
+  var hours = ((hours24 + 11) % 12) + 1;
+  var amPm = hours24 > 11 ? " PM" : " AM";
+  var minutes = fourDigitTime.substring(2);
+
+  return hours + ":" + minutes + amPm;
+}
+
 export function convertTime(hour: number, minutes: number) {
-  return `${hour < 10 ? "0" + hour.toString() : hour}:${
+  return `${hour < 10 ? "0" + hour.toString() : hour}${
     minutes < 10 ? "0" + minutes.toString() : minutes
   }`;
 }
@@ -51,7 +60,7 @@ export const FoodEntries: React.FC<FoodEntriesShouldUpdate> = ({ update }) => {
         ({ typesOfFood, createdAt, hour, minutes, notes }, idx) => {
           return (
             <JournalCard
-              body={`${convertTime(hour, minutes)} ${
+              body={`${getFormattedTime(convertTime(hour, minutes))} ${
                 notes ? `Notes: ${notes}` : ""
               }`}
               title={typesOfFood.join(", ")}

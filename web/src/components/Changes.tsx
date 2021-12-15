@@ -63,7 +63,7 @@ export const Changes = () => {
       <div className="flex flex-col ">
         <div className="max-w-lg w-sm">
           <p
-            className="relative text-lg whitespace-nowrap truncate overflow-hidden mr-12 mb-2"
+            className="font-semibold relative text-lg whitespace-nowrap truncate overflow-hidden mr-12 mb-2"
             style={{ width: "240px" }}
           >
             Changes
@@ -74,7 +74,7 @@ export const Changes = () => {
           <Listbox value={selected} onChange={setSelected}>
             {({ open }) => (
               <>
-                <Listbox.Label className="block text-sm font-medium text-gray-700">
+                <Listbox.Label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
                   Consistency
                 </Listbox.Label>
                 <div className="mt-1 relative">
@@ -150,26 +150,23 @@ export const Changes = () => {
             )}
           </Listbox>
 
-          <p className="relative text-lg whitespace-nowrap truncate overflow-hidden mr-12 mb-2 mt-6">
+          <label className="mt-2 block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
             Time of Change (YYYY-MM-DD HH:MM)
-          </p>
+          </label>
 
           <input
-            className="border block h-10 rounded w-full"
+            className="flex md:w-1/2 lg:w-1/2appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
             type="text"
             value={time}
             onChange={(e) => setTime(e.target.value)}
             placeholder="YYYY-MM-DD HH:MM"
           />
-          <p
-            className="relative text-lg whitespace-nowrap truncate overflow-hidden mr-12 mb-2 mt-6"
-            style={{ width: "240px" }}
-          >
+          <label className="mt-2 block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
             {"Notes & Comments (optional)"}
-          </p>
+          </label>
           <textarea
-            className="border w-full h-1/4 block"
-            rows={5}
+            className="flex w-full appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+            rows={3}
             value={comments}
             onChange={(e) => setComments(e.target.value)}
           />

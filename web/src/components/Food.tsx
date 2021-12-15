@@ -78,7 +78,7 @@ export const Food = () => {
       <div className="flex flex-col ">
         <div className="max-w-lg w-sm">
           <p
-            className="relative text-lg whitespace-nowrap truncate overflow-hidden mr-12 mb-2"
+            className="font-semibold relative text-lg whitespace-nowrap truncate overflow-hidden mr-12 mb-2"
             style={{ width: "240px" }}
           >
             Type Of Food
@@ -112,29 +112,25 @@ export const Food = () => {
               })}
             </div>
           </div>
-          <p
-            className="relative text-lg whitespace-nowrap truncate overflow-hidden mr-12 mb-2 mt-6"
-            style={{ width: "240px" }}
-          >
-            Time of Feeding
-          </p>
+
+          <label className="mt-2 block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+            Time of Feeding (HH:MM)
+          </label>
 
           <input
-            className="border w-1/3 block h-10 rounded"
+            className="flex md:w-1/2 lg:w-1/2appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
             type="text"
             value={time}
             onChange={(e) => setTime(e.target.value)}
             placeholder="HH:MM"
           />
-          <p
-            className="relative text-lg whitespace-nowrap truncate overflow-hidden mr-12 mb-2 mt-6"
-            style={{ width: "240px" }}
-          >
+
+          <label className="mt-2 block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
             {"Notes & Comments (optional)"}
-          </p>
+          </label>
           <textarea
-            className="border w-full h-1/4 block"
-            rows={5}
+            className="flex w-full appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+            rows={3}
             value={comments}
             onChange={(e) => setComments(e.target.value)}
           />
