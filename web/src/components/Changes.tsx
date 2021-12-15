@@ -37,7 +37,7 @@ export const Changes = () => {
     const dateCheck = Date.parse(time);
     if (isNaN(dateCheck)) {
       console.log(dateCheck);
-      setErrMessage("Invalid Date");
+      setErrMessage("Invalid date");
       return;
     }
 

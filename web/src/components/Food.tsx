@@ -47,13 +47,13 @@ export const Food = () => {
     // creating Date from string
     const split = timeInput.split(":");
     if (split.length < 2) {
-      setErrMessage("Time can't be parsed");
+      setErrMessage("Invalid time");
       return;
     }
     const hours = parseInt(split[0]);
     const minutes = parseInt(split[1]);
     if (isNaN(hours) || isNaN(minutes)) {
-      setErrMessage("Time can't be parsed");
+      setErrMessage("Invalid time");
       return;
     }
 
