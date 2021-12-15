@@ -37,22 +37,22 @@ export const Home = () => {
     <div className="bg-white flex overflow-hidden max-w-7xl mx-auto">
       <div className="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
         <div className="mx-auto w-full max-w-sm lg:w-96">
-          <h1 className="text-lg font-semibold text-gray-900">
+          <h1 className="text-lg font-semibold text-gray-900 text-center">
             Child Development Monitor
           </h1>
-          <div className="columns-3 mt-6 flex flex-row">
+          <div className="flex flex-row justify-center">
             <Link to="/food">
               <div className="column">
                 <img src="https://i.ibb.co/HpXknVP/image1.png" alt="logo" />
               </div>
             </Link>
-            <Link to="/sleep">
+            {/* <Link to="/sleep">
               <div className="column">
                 <div className="column">
                   <img src="https://i.ibb.co/26zN4bM/image2.png" alt="logo" />
                 </div>
               </div>
-            </Link>
+            </Link> */}
             <Link to="/changes">
               <div className="column">
                 <div className="column">

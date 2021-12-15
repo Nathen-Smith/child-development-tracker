@@ -1,18 +1,33 @@
 import React from "react";
-import { JournalCard } from "./journal/JournalCard";
-
-import Badge from "react-bootstrap/Badge";
-import Form from "react-bootstrap/Form";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
-import Button from "react-bootstrap/Button";
-import FloatingLabel from "react-bootstrap/FloatingLabel";
-
 
 export const HomeNoAuth = () => {
-  return <div >
-    <body style={{backgroundColor:"#fffbcf", height: '100vh'}}>
-      <div style={{padding:"200px", color: "#021e6e", fontSize:'4em', textAlign: "center", backgroundColor:"#d9fcfc"}  }>Child Development Tracker {"\u2600"}</div> 
-    </body>
-    </div>;
+  return (
+    <div>
+      <body style={{ backgroundColor: "#fffbcf", height: "100vh" }}>
+        <div
+          style={{
+            padding: "200px",
+            color: "#021e6e",
+
+            textAlign: "center",
+            backgroundColor: "#d9fcfc",
+          }}
+        >
+          <p style={{ fontSize: "4em" }}>
+            Child Development Tracker {"\u2600"}
+          </p>
+          <br />
+          <div className="flex flex-row max-w-7xl mx-auto justify-between">
+            <p className="mx-auto text-2xl max-w-xs">
+              Track your child's development according to CDC milestones
+            </p>
+            <p className="mx-auto text-2xl max-w-sm">
+              Record food, changes, and journals
+            </p>
+            <p className="mx-auto text-2xl max-w-sm">Login for free!</p>
+          </div>
+        </div>
+      </body>
+    </div>
+  );
 };
