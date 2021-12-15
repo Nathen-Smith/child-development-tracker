@@ -1,126 +1,157 @@
-import React from "react";
-import { JournalCard } from "./journal/JournalCard";
+import React, { useState, useEffect } from "react";
+import { useUser } from "reactfire";
+import axios from "../axios";
+import { FoodEntries } from "./FoodEntries";
 
-import Badge from "react-bootstrap/Badge";
-import Form from "react-bootstrap/Form";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
-import Button from "react-bootstrap/Button";
-import FloatingLabel from "react-bootstrap/FloatingLabel";
-
-interface FoodProps {
-  color: string;
-  timeline: number;
+export function classNames(...classes: any[]) {
+  return classes.filter(Boolean).join(" ");
 }
 
-export const Food: React.FC<FoodProps> = ({ color, timeline }) => {
+export const Food = () => {
+  const { data: user } = useUser();
+  const [time, setTime] = useState("");
+  const [comments, setComments] = useState("");
+  const [activeSelections, setActiveSelections] = useState<string[]>([]);
+  const [entriesShouldUpdate, setEntriesShouldUpdate] = useState(false);
+  const [options, setOptions] = useState([
+    { name: "Milk", active: false },
+    { name: "Formula", active: false },
+    { name: "Dairy", active: false },
+    { name: "Fruit", active: false },
+    { name: "Meat", active: false },
+    { name: "Bread", active: false },
+    { name: "Juice", active: false },
+  ]);
+  const [errMessage, setErrMessage] = useState("");
+
+  const updateFieldChanged = (index: number) => {
+    let newArr = [...options]; // copying the old datas array
+    newArr[index].active = !newArr[index].active;
+    setOptions(newArr);
+  };
+
+  useEffect(() => {
+    let activeSelections = new Array<string>();
+    let len = options.length;
+    while (len--) {
+      if (options[len].active) {
+        activeSelections.push(options[len].name);
+      }
+    }
+    options && setActiveSelections(activeSelections);
+  }, [options]);
+
+  async function postEntry(foods: string[], timeInput: string, notes: string) {
+    if (!user) return;
+    setErrMessage(""); //reset error message
+    // creating Date from string
+    const split = timeInput.split(":");
+    if (split.length < 2) {
+      setErrMessage("Time can't be parsed");
+      return;
+    }
+    const hours = parseInt(split[0]);
+    const minutes = parseInt(split[1]);
+    if (isNaN(hours) || isNaN(minutes)) {
+      setErrMessage("Time can't be parsed");
+      return;
+    }
+
+    const entry = {
+      typesOfFood: foods,
+      hour: hours,
+      minutes: minutes,
+      notes: notes,
+      email: user.email,
+    };
+
+    try {
+      await axios.post("/food", entry);
+      setEntriesShouldUpdate(!entriesShouldUpdate); // force rerender
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
   return (
-    <div className="bg-white flex overflow-hidden">
-      <div className="flex-1 flex flex-col justify-center py-12 px-4 resize-x min-w-max sm:px-6 lg:flex-none lg:px-20 xl:px-24">
-        <div className="relative grid grid-cols-1 gap-4 p-4 mb-8 border rounded-lg bg-white shadow-lg flex flex-wrap">
-          <div className="relative flex gap-4">
-            <div className="flex flex-col w-full">
-              <div className="flex flex-row justify-between">
-                <p
-                  className="relative text-xl whitespace-nowrap truncate overflow-hidden mr-12 flex flex-wrap"
-                  style={{ width: "240px" }}
-                >
-                  Food
-                </p>
-                <Badge
-                  style={{ height: "20px" }}
-                  className="mt-6 ml-6"
-                  bg={color}
-                >
-                  {timeline + " months"}
-                </Badge>
-              </div>
+    <div className="grid grid-cols-2 max-w-7xl mx-auto content-between">
+      <div className="flex flex-col ">
+        <div className="max-w-lg w-sm">
+          <p
+            className="font-semibold relative text-lg whitespace-nowrap truncate overflow-hidden mr-12 mb-2"
+            style={{ width: "240px" }}
+          >
+            Type Of Food
+          </p>
+          {errMessage && <div className="text-red-500">{errMessage}</div>}
+
+          <div className="flex flex-row justify-between">
+            <div>
+              {options.map((option, idx) => {
+                return (
+                  <label
+                    className="flex inline-flex items-center pr-1 mb-1"
+                    key={idx}
+                  >
+                    <button
+                      onClick={() => {
+                        updateFieldChanged(idx);
+                      }}
+                      className={classNames(
+                        option.active
+                          ? "bg-indigo-600 hover:bg-indigo-500 text-white"
+                          : " hover:bg-indigo-600 text-indigo-600 hover:text-white border border-indigo-600",
+                        " font-semibold py-2 px-4 rounded"
+                      )}
+                      aria-current={option.active ? "page" : undefined}
+                    >
+                      <span className="mx-2">{option.name}</span>
+                    </button>
+                  </label>
+                );
+              })}
             </div>
           </div>
 
-          <Form>
-            <p
-              className="relative text-lg whitespace-nowrap truncate overflow-hidden mr-12 mb-2 flex flex-wrap"
-              style={{ width: "240px" }}
-            >
-              Type Of Food
-            </p>
+          <label className="mt-2 block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+            Time of Feeding (HH:MM)
+          </label>
 
-            <Form.Group as={Row} className="mb-3 ml-3 mr-3">
-              <Row>
-                <Col>
-                  <Form.Check type="checkbox" label="Milk" />
-                  <Form.Check type="checkbox" label="Formula" />
-                  <Form.Check type="checkbox" label="Dairy" />
-                  <Form.Check type="checkbox" label="Fruit" />
-                </Col>
-                <Col>
-                  <Form.Check type="checkbox" label="Meat" />
-                  <Form.Check type="checkbox" label="Bread" />
-                  <Form.Check type="checkbox" label="Juice" />
-                </Col>
-              </Row>
-            </Form.Group>
-
-            <p
-              className="relative text-lg whitespace-nowrap truncate overflow-hidden mr-12 mb-2 mt-6"
-              style={{ width: "240px" }}
-            >
-              Time Of Feeding
-            </p>
-
-            <FloatingLabel
-              controlId="floatingInput"
-              label="Time HH::MM"
-              className="mb-3 mr-3 ml-3"
-            >
-              <Form.Control type="" placeholder="HH:MM" />
-            </FloatingLabel>
-
-            <p
-              className="relative text-lg whitespace-nowrap truncate overflow-hidden mr-12 mb-2 mt-6"
-              style={{ width: "240px" }}
-            >
-              {"Notes & Comments"}
-            </p>
-
-            <FloatingLabel
-              controlId="floatingTextarea2"
-              label="Comments"
-              className="ml-3 mr-3"
-            >
-              <Form.Control
-                as="textarea"
-                placeholder="Leave a comment here"
-                style={{ height: "100px" }}
-              />
-            </FloatingLabel>
-
-            <Form.Group as={Row} className="mb-3 ml-6 mr-6 mt-12 ">
-              <Button type="submit">Save</Button>
-            </Form.Group>
-          </Form>
-        </div>
-      </div>
-      <div>
-      <div className="flex flex-wrap min-w-0">
-        <div className="overflow-scroll pt-12 " style={{ height: "94vh" }}>
-          {/* overflow-scroll pt-12  */}
-          
-          <JournalCard
-            body="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-            title="title"
-            createdAt="createdAt"
-            key={1}
+          <input
+            className="flex md:w-1/2 lg:w-1/2appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+            type="text"
+            value={time}
+            onChange={(e) => setTime(e.target.value)}
+            placeholder="HH:MM"
           />
-          {/* <JournalCard text="text" title="title" createdAt="createdAt" />
-          <JournalCard text="text" title="title" createdAt="createdAt" />
-          <JournalCard text="text" title="title" createdAt="createdAt" />
-          <JournalCard text="text" title="title" createdAt="createdAt" />
-          <JournalCard text="text" title="title" createdAt="createdAt" /> */}
+
+          <label className="mt-2 block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+            {"Notes & Comments (optional)"}
+          </label>
+          <textarea
+            className="flex w-full appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+            rows={3}
+            value={comments}
+            onChange={(e) => setComments(e.target.value)}
+          />
+          <button
+            onClick={async (e) => {
+              e.preventDefault();
+              if (activeSelections.length === 0 || !time) {
+                setErrMessage("Must fill out all required fields");
+                return;
+              }
+              postEntry(activeSelections, time, comments);
+            }}
+            className={
+              "w-20 bg-indigo-600 text-white  border border-indigo-600 font-semibold py-2 px-2 rounded"
+            }
+          >
+            <span className="mx-2">Post</span>
+          </button>
         </div>
       </div>
-      </div>
+      <FoodEntries update={entriesShouldUpdate} />
     </div>
   );
 };

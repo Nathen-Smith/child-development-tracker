@@ -3,7 +3,8 @@ import StatusCodes from "http-status-codes";
 
 import Milestone from "../models/Milestone";
 
-const { OK, CREATED, NOT_FOUND, BAD_REQUEST, INTERNAL_SERVER_ERROR } = StatusCodes;
+const { OK, CREATED, NOT_FOUND, BAD_REQUEST, INTERNAL_SERVER_ERROR } =
+  StatusCodes;
 
 /**
  * Sends a GET request to the Milestone collection and returns the response
@@ -12,7 +13,7 @@ const { OK, CREATED, NOT_FOUND, BAD_REQUEST, INTERNAL_SERVER_ERROR } = StatusCod
  * @returns json formatted response with status code
  */
 export async function getMilestone(req: Request, res: Response) {
-  let {where, sort, select, skip, limit, count} = req.query;
+  let { where, sort, select, skip, limit, count } = req.query;
   let query = {} as any;
   query.options = {};
   if (where) query.where = JSON.parse(where as string);
@@ -24,14 +25,20 @@ export async function getMilestone(req: Request, res: Response) {
 
   try {
     let find = await Milestone.find(query.where, query.select, query.options);
+    if (count) {
+      return res.status(OK).json({
+        message: "GET successful",
+        data: find.length,
+      });
+    }
     return res.status(OK).json({
-      message: 'GET successful',
-      data: find
+      message: "GET successful",
+      data: find,
     });
   } catch (err) {
     return res.status(INTERNAL_SERVER_ERROR).json({
-      message: 'GET failed',
-      data: []
+      message: "GET failed",
+      data: [],
     });
   }
 }
@@ -45,27 +52,28 @@ export async function getMilestone(req: Request, res: Response) {
 export async function createMilestone(req: Request, res: Response) {
   if (!req.body.title || !req.body.timeline || !req.body.email) {
     return res.status(BAD_REQUEST).json({
-      message: 'POST failed: [title, timeline, email] all required',
-      data: []
+      message: "POST failed: [title, timeline, email] all required",
+      data: [],
     });
   }
-  
+
   const newMilestone = new Milestone({
-    'title': req.body.title,
-    'timeline': req.body.timeline,
-    'email': req.body.email
+    title: req.body.title,
+    timeline: req.body.timeline,
+    email: req.body.email,
+    category: req.body.category,
   });
 
   try {
     let save = await newMilestone.save();
     return res.status(CREATED).json({
-      message: 'POST successful',
-      data: save
+      message: "POST successful",
+      data: save,
     });
   } catch (err) {
     return res.status(INTERNAL_SERVER_ERROR).json({
-      message: 'POST failed',
-      data: []
+      message: "POST failed",
+      data: [],
     });
   }
 }
@@ -80,25 +88,25 @@ export async function createMilestone(req: Request, res: Response) {
 export async function updateMilestone(req: Request, res: Response) {
   if (!req.body._id) {
     return res.status(BAD_REQUEST).json({
-      message: 'PUT failed: _id required',
-      data: []
+      message: "PUT failed: _id required",
+      data: [],
     });
   }
 
   const filter = {
-    _id: req.body._id
+    _id: req.body._id,
   };
 
   try {
     let find = await Milestone.findOneAndUpdate(filter, req.body);
     return res.status(OK).json({
-      message: 'PUT successful',
-      data: find
+      message: "PUT successful",
+      data: find,
     });
   } catch (err) {
     return res.status(NOT_FOUND).json({
-      message: 'PUT failed: specified milestone does not exist',
-      data: []
+      message: "PUT failed: specified milestone does not exist",
+      data: [],
     });
   }
 }
@@ -113,25 +121,25 @@ export async function updateMilestone(req: Request, res: Response) {
 export async function deleteMilestone(req: Request, res: Response) {
   if (!req.body._id) {
     return res.status(BAD_REQUEST).json({
-      message: 'DELETE failed: _id required',
-      data: []
+      message: "DELETE failed: _id required",
+      data: [],
     });
   }
 
   const filter = {
-    _id: req.body._id
+    _id: req.body._id,
   };
 
   try {
     const deleted = await Milestone.deleteOne(filter);
     return res.status(OK).json({
-      message: 'DELETE successful',
-      data: deleted
+      message: "DELETE successful",
+      data: deleted,
     });
   } catch (err) {
     return res.status(NOT_FOUND).json({
-      message: 'DELETE failed: specified milestone does not exist',
-      data: []
+      message: "DELETE failed: specified milestone does not exist",
+      data: [],
     });
   }
 }

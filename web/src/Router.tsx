@@ -6,10 +6,9 @@ import { JournalEntry } from "./components/journal/JournalEntry";
 import { Home } from "./components/Home";
 
 import { Milestones } from "./components/Milestones";
-import { Changes } from "./components/Changes";
-import { Sleep } from "./components/Sleep";
 import { Food } from "./components/Food";
 import { Test } from "./components/Test";
+import { Changes } from "./components/Changes";
 
 interface RequireAuthProps {
   children: JSX.Element;
@@ -31,8 +30,7 @@ export const Router = () => {
     { element: <Home />, path: "/" },
     { element: <Milestones />, path: "/milestones" },
     { element: <Changes />, path: "/changes" },
-    { element: <Sleep timeline={1} color={"primary"} />, path: "/sleep" },
-    { element: <Food timeline={1} color={"primary"} />, path: "/food" },
+    { element: <Food />, path: "/food" },
     { element: <JournalEntry />, path: "/journal/post" },
     { element: <Test />, path: "/test" },
   ];
