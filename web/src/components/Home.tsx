@@ -7,7 +7,6 @@ import { HomeNoAuth } from "./HomeNoAuth";
 import { Link } from "react-router-dom";
 
 import { JournalArrProps } from "./journal";
-import { time } from "console";
 import { TimelineMenu } from "./TimelineMenu";
 
 export const Home = () => {

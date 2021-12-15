@@ -17,11 +17,21 @@ interface ChangesEntriesShouldUpdate {
   update: boolean;
 }
 
+function prettyDate(time: string) {
+  console.log(time);
+
+  var dateWithouthSecond = new Date(time);
+  return dateWithouthSecond.toLocaleTimeString(navigator.language, {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+}
+
 export const ChangesEntries: React.FC<ChangesEntriesShouldUpdate> = ({
   update,
 }) => {
   const { data: user } = useUser();
-  const [ChangesEntries, setChangesEntries] = useState<ChangesArrProps>();
+  const [changesEntries, setChangesEntries] = useState<ChangesArrProps>();
 
   useEffect(() => {
     async function getUserData() {
@@ -42,10 +52,10 @@ export const ChangesEntries: React.FC<ChangesEntriesShouldUpdate> = ({
 
   return (
     <div className="overflow-scroll pt-12" style={{ height: "88vh" }}>
-      {ChangesEntries?.map(({ consistency, notes, time }, idx) => {
+      {changesEntries?.map(({ consistency, notes, time }, idx) => {
         return (
           <JournalCard
-            body={`${notes ? `Notes: ${notes}` : ""}`}
+            body={`${prettyDate(time)} ${notes ? `Notes: ${notes}` : ""}`}
             title={consistency}
             createdAt={time}
             key={idx}

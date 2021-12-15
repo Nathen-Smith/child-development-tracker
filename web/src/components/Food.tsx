@@ -52,7 +52,10 @@ export const Food = () => {
     }
     const hours = parseInt(split[0]);
     const minutes = parseInt(split[1]);
-    if (isNaN(hours) || isNaN(minutes)) throw "Time can't be parsed";
+    if (isNaN(hours) || isNaN(minutes)) {
+      setErrMessage("Time can't be parsed");
+      return;
+    }
 
     const entry = {
       typesOfFood: foods,
