@@ -54,14 +54,15 @@ export const Home = () => {
           Statistics
         </h1>
 
-        <StatsCard color={"primary"} name="Social and Emotional" timeline={6} />
+        <StatsCard color={"primary"} category="Social and Emotional" name="Social and Emotional" timeline={6} />
         <StatsCard
           color={"success"}
+          category="Language/Communication"
           name="Language/Communication"
           timeline={6}
         />
-        <StatsCard color={"danger"} name="Cognitive Development" timeline={6} />
-        <StatsCard color={"warning"} name="Social and Emotional" timeline={6} />
+        <StatsCard color={"danger"} category="Cognitive" name="Cognitive Development" timeline={6} />
+        <StatsCard color={"warning"} category="Physical" name="Physical" timeline={6} />
       </div>
       <div className="w-full">
         <div

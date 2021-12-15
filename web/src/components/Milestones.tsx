@@ -25,20 +25,21 @@ export const Milestones = () => {
       
       <ScrollingCarousel>
         <div className="lg:w-1/4 sm:w-full mr-12 ml-12">
-        <StatsCard color={"primary"} name="Social and Emotional" timeline={6}  />
+        <StatsCard color={"primary"} category="Social and Emotional" name="Social and Emotional" timeline={6}  />
         </div>
         <div className="lg:w-1/4 sm:w-full mr-12 ml-12">
         <StatsCard
           color={"success"}
+          category="Language/Communication"
           name="Language/Communication"
           timeline={6}
         />
         </div>
         <div className="lg:w-1/4 sm:w-full mr-12 ml-12">
-        <StatsCard color={"danger"} name="Cognitive Development" timeline={6} />
+        <StatsCard color={"danger"} category="Cognitive" name="Cognitive Development" timeline={6} />
         </div>
         <div className="lg:w-1/4 sm:w-full mr-12 ml-12">
-        <StatsCard color={"warning"} name="Phyisical" timeline={6} />
+        <StatsCard color={"warning"} category="Physical" name="Physical" timeline={6} />
         </div>
       </ScrollingCarousel>
 

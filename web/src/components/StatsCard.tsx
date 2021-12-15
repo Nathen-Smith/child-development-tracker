@@ -11,6 +11,7 @@ import axios from "../axios";
 
 interface StatsCardProps {
   name: string;
+  category: string,
   index?: number;
   color: string;
   timeline: number;
@@ -18,8 +19,9 @@ interface StatsCardProps {
 
 export const StatsCard: React.FC<StatsCardProps> = ({
   name,
+  category,
   color,
-  timeline,
+  timeline
 }) => {
   // const [dataValue, setDataValue] = useState([]);
   const { data: user } = useUser();
@@ -28,13 +30,13 @@ export const StatsCard: React.FC<StatsCardProps> = ({
   useEffect(() => {
     async function getProgress() {
       const total = MilestonesData.filter(
-        (m) => m.timeline === timeline && m.category === name
+        (m) => m.timeline === timeline && m.category === category
       ).length;
       try {
         const response = await axios.get(
           `/milestone?where={"email": "${
             user!.email
-          }", "timeline": ${timeline}, "category": "${name}"}&count=true`
+          }", "timeline": ${timeline}, "category": "${category}"}&count=true`
         );
         if (response.status !== 200) throw new Error("GET failed");
         setProgress((100 * response.data.data) / total);
