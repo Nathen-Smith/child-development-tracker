@@ -11,6 +11,8 @@ import { Sleep } from "./components/Sleep";
 import { Food } from "./components/Food";
 import { Test } from "./components/Test";
 
+import { FoodNew } from "./components/FoodNew";
+
 interface RequireAuthProps {
   children: JSX.Element;
 }
@@ -35,6 +37,7 @@ export const Router = () => {
     { element: <Food timeline={1} color={"primary"} />, path: "/food" },
     { element: <JournalEntry />, path: "/journal/post" },
     { element: <Test />, path: "/test" },
+    { element: <FoodNew />, path: "/foodnew" },
   ];
 
   return (

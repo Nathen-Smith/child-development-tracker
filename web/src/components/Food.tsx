@@ -27,13 +27,13 @@ export const Food: React.FC<FoodProps> = ({ color, timeline }) => {
                 >
                   Food
                 </p>
-                <Badge
+                {/* <Badge
                   style={{ height: "20px" }}
                   className="mt-6 ml-6"
                   bg={color}
                 >
                   {timeline + " months"}
-                </Badge>
+                </Badge> */}
               </div>
             </div>
           </div>
