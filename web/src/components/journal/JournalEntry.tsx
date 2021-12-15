@@ -15,7 +15,6 @@ export const JournalEntry = () => {
         body: body,
         email: user!.email,
       };
-      console.log(post);
       await axios.post("/journal", post);
 
       setTitle("");
