@@ -37,7 +37,7 @@ export const JournalEntry = () => {
         </div>
 
         <button
-          className="h-10 px-6 font-semibold rounded-md border border-gray-200 text-gray-900 mr-6 mt-12"
+          className="w-20  bg-indigo-600 text-white  border border-indigo-600 font-semibold h-10 px-2 rounded"
           onClick={async (e) => {
             e.preventDefault();
             if (!title || !body || !user) {
