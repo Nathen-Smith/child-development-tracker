@@ -7,6 +7,7 @@ interface MilestonesCardProps {
   name?: string;
   index?: number;
   milestoneName: string;
+  category: string;
   timeline: number;
 }
 
@@ -15,6 +16,7 @@ export const MilestoneCard: React.FC<MilestonesCardProps> = ({
   index,
   milestoneName,
   timeline,
+  category
 }) => {
   const { data: user } = useUser();
   const [hasBeenCompleted, setHasBeenCompleted] = useState(false);
@@ -41,6 +43,7 @@ export const MilestoneCard: React.FC<MilestonesCardProps> = ({
         title: milestoneName,
         timeline: timeline,
         email: user?.email,
+        category: category
       });
       setHasBeenCompleted(true);
     } catch (err) {
