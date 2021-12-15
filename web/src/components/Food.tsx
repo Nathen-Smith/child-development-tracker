@@ -38,7 +38,6 @@ export const Food = () => {
         activeSelections.push(options[len].name);
       }
     }
-    console.log(activeSelections);
     options && setActiveSelections(activeSelections);
   }, [options]);
 
