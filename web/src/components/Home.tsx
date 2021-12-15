@@ -17,7 +17,11 @@ export const Home = () => {
   useEffect(() => {
     async function getUserData() {
       try {
-        const userParams = { where: `{"email": "${user?.email}"}` };
+        const userParams = {
+          where: `{"email": "${user?.email}"}`,
+          sort: `{"createdAt" : "-1"}`,
+          limit: 10,
+        };
         const journalRes = await axios.get("/journal", { params: userParams });
         setJournals(journalRes.data.data);
       } catch (err) {

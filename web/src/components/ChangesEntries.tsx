@@ -18,9 +18,7 @@ interface ChangesEntriesShouldUpdate {
 }
 
 function prettyDate(time: string) {
-  console.log(time);
-
-  var dateWithouthSecond = new Date(time);
+  const dateWithouthSecond = new Date(time);
   return dateWithouthSecond.toLocaleTimeString(navigator.language, {
     hour: "2-digit",
     minute: "2-digit",
