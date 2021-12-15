@@ -15,7 +15,6 @@ export const JournalEntry = () => {
         body: body,
         email: user!.email,
       };
-      console.log(post)
       await axios.post("/journal", post);
 
       setTitle("");
@@ -26,18 +25,16 @@ export const JournalEntry = () => {
   }
 
   return (
-    <form className="mx-auto px-2 sm:px-6 lg:px-8 mx-2 space-y-3">
+    <form className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 mx-2 space-y-3">
       <div className="flex flex-1 flex-row justify-between align-center">
         <div className="flex flex-col">
-        <h1 className="text-lg font-semibold text-gray-900 mt-12 ml-12">
+          <h1 className="text-lg font-semibold text-gray-900 mt-12 ml-12">
             Child Development Monitor
           </h1>
           <h1 className="text-lg font-regular text-gray-900 ml-12 ">
-                New Journal Entry
+            New Journal Entry
           </h1>
         </div>
-
-
 
         <button
           className="h-10 px-6 font-semibold rounded-md border border-gray-200 text-gray-900 mr-6 mt-12"
@@ -56,7 +53,6 @@ export const JournalEntry = () => {
       </div>
       {err && <div className="text-red-500">Must fill out all fields</div>}
 
-
       <form className="w-full ml-12 mt-12">
         <div className="flex flex-wrap -mx-3 mb-6">
           <div className="w-full md:w-full px-3">
@@ -65,16 +61,15 @@ export const JournalEntry = () => {
             </label>
 
             <input
-                className="flex md:w-1/2 lg:w-1/2appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                type="text"
-                value={title}
-                onChange={(event) => setTitle(event.target.value)}
-              />
+              className="flex md:w-1/2 lg:w-1/2appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              type="text"
+              value={title}
+              onChange={(event) => setTitle(event.target.value)}
+            />
 
             {/* <input id="grid-last-name" type="text" placeholder="Doe"> */}
           </div>
         </div>
-
 
         <div className="flex flex-wrap -mx-3 mb-6">
           <div className="w-full px-3">
@@ -89,21 +84,17 @@ export const JournalEntry = () => {
                 onChange={(event) => setTitle(event.target.value)}
               /> */}
 
-        <textarea
-          className="flex md:w-1/2 lg:w-3/4 h-96 appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-          rows={5}
-          value={body}
-          onChange={(event) => setBody(event.target.value)}
-        />
+            <textarea
+              className="flex md:w-1/2 lg:w-3/4 h-96 appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              rows={5}
+              value={body}
+              onChange={(event) => setBody(event.target.value)}
+            />
 
             {/* <input id="grid-last-name" type="text" placeholder="Doe"> */}
           </div>
         </div>
-
-
       </form>
-
-      
     </form>
   );
 };

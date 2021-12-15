@@ -11,7 +11,7 @@ import axios from "../axios";
 
 interface StatsCardProps {
   name: string;
-  category: string,
+  category: string;
   index?: number;
   color: string;
   timeline: number;
@@ -21,7 +21,7 @@ export const StatsCard: React.FC<StatsCardProps> = ({
   name,
   category,
   color,
-  timeline
+  timeline,
 }) => {
   // const [dataValue, setDataValue] = useState([]);
   const { data: user } = useUser();
@@ -45,7 +45,7 @@ export const StatsCard: React.FC<StatsCardProps> = ({
       }
     }
     user && getProgress();
-  });
+  }, [user, category, timeline]);
 
   return (
     <div className="relative grid grid-cols-1 gap-4 p-4 mb-8 border rounded-lg bg-white shadow-lg">
