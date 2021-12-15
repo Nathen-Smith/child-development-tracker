@@ -48,7 +48,6 @@ export async function createFood(req: Request, res: Response) {
     !req.body.typesOfFood ||
     req.body.hour === undefined ||
     !req.body.minutes === undefined ||
-    !req.body.notes ||
     !req.body.email
   ) {
     console.log(req.body);
@@ -63,9 +62,9 @@ export async function createFood(req: Request, res: Response) {
     typesOfFood: req.body.typesOfFood,
     hour: req.body.hour,
     minutes: req.body.minutes,
-    notes: req.body.notes,
     email: req.body.email,
   });
+  if (req.body.notes) newFood.notes = req.body.notes;
 
   try {
     let save = await newFood.save();

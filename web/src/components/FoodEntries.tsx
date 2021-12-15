@@ -7,25 +7,35 @@ export interface FoodArrProps extends Array<FoodProps> {}
 
 export interface FoodProps {
   typesOfFood: string[];
-  time: Date;
+  hour: number;
+  minutes: number;
+  notes?: string;
   email: string;
   createdAt: string;
 }
 
-// typesOfFood: { type: [String], required: true },
-//     time: { type: Date, required: true },
-//     notes: { type: String, required: true },
-//     email: { type: String, required: true },
-//     createdAt: {type: Date, default: Date.now}
+interface FoodEntriesShouldUpdate {
+  update: boolean;
+}
 
-export const FoodEntries = () => {
+export function convertTime(hour: number, minutes: number) {
+  return `${hour < 10 ? "0" + hour.toString() : hour}:${
+    minutes < 10 ? "0" + minutes.toString() : minutes
+  }`;
+}
+
+export const FoodEntries: React.FC<FoodEntriesShouldUpdate> = ({ update }) => {
   const { data: user } = useUser();
   const [foodEntries, setFoodEntries] = useState<FoodArrProps>();
 
   useEffect(() => {
     async function getUserData() {
       try {
-        const userParams = { where: `{"email": "${user?.email}"}` };
+        const userParams = {
+          where: `{"email": "${user?.email}"}`,
+          sort: `{"createdAt" : "-1"}`,
+          limit: 10,
+        };
         const foodRes = await axios.get("/food", { params: userParams });
         setFoodEntries(foodRes.data.data);
       } catch (err) {
@@ -33,20 +43,24 @@ export const FoodEntries = () => {
       }
     }
     user && getUserData();
-  }, [user]);
+  }, [user, update]);
 
   return (
     <div className="overflow-scroll pt-12" style={{ height: "88vh" }}>
-      {foodEntries?.map(({ typesOfFood, createdAt, time }, idx) => {
-        return (
-          <JournalCard
-            body="hi"
-            title={typesOfFood.join()}
-            createdAt={createdAt}
-            key={idx}
-          />
-        );
-      })}
+      {foodEntries?.map(
+        ({ typesOfFood, createdAt, hour, minutes, notes }, idx) => {
+          return (
+            <JournalCard
+              body={`${convertTime(hour, minutes)} ${
+                notes ? `Notes: ${notes}` : ""
+              }`}
+              title={typesOfFood.join(", ")}
+              createdAt={createdAt}
+              key={idx}
+            />
+          );
+        }
+      )}
     </div>
   );
 };
