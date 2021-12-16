@@ -48,7 +48,7 @@ export const JournalEntry = () => {
       </label>
 
       <textarea
-        className="flex md:w-1/2 lg:w-3/4 h-96 appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+        className="flex lg:w-3/4 h-96 appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
         rows={5}
         value={body}
         onChange={(event) => setBody(event.target.value)}
